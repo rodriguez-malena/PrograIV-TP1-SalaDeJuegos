@@ -16,17 +16,15 @@ export class Registro implements OnInit {
 
   miRegistro!: FormGroup;  // contiene todos los formControl
 
-  miControl  = new FormControl('', [Validators.required, Validators.minLength(4)]);
-
-  constructor(private usuariosService: UsuariosService, private fb: FormBuilder) {} // FormBuilder es un servicio que crea instancias de formularios reactivos. 
+  constructor(private usuariosService: UsuariosService, private fb: FormBuilder) {} 
   
   ngOnInit(): void {
-      this.miRegistro = this.fb.group({ // group es un método de FormBuilder, que recibe un objeto x parámetro
-        /* Cada propiedad de este objeto estara conectado al input o a los controles de mi html a traves
-          del formControlName escrito en el html*/
+      this.miRegistro = this.fb.group({
 
         usuario: ["", {
-            validators: [Validators.required],
+            validators: [Validators.required,
+              Validators.minLength(4)
+            ],
             asyncValidators: usuarioExisteAsyncValidator(this.usuariosService),
             updateOn: 'blur'
         }],

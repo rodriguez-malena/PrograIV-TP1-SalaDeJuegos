@@ -16,14 +16,25 @@
             @if(usuario?.hasError('required') && usuario?.touched){
                      <small class="text-danger">Usuario obligatorio</small>
                  }
+             @if (usuario?.touched && usuario?.hasError('minlength')) {
+                    <small class="text-danger">
+                        Mínimo 4 caracteres
+                    </small>
+                    }
           </div>
 
           <div class="form-group">
             <label class="form-label" for="nombre">Nombre</label>
             <input type="text" class="form-control" id="nombre" formControlName="nombre">
-            @if (nombre?.hasError('pattern')) { <!-- Si no existe tira error, pattern es un validador de angular, devuelve un objeto -->
+            @if (nombre?.hasError('pattern') && nombre?.touched) { <!-- Si no existe tira error, pattern es un validador de angular, devuelve un objeto -->
               <small class="text-danger">Sólo debe contener solo letras</small>
             }
+
+             @if (nombre?.touched && nombre?.hasError('minlength')) {
+                    <small class="text-danger">
+                        Mínimo 4 caracteres
+                    </small>
+                    }
           </div>
 
           <div class="form-group">

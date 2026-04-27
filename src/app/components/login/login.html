@@ -7,9 +7,14 @@
             <div class="input-user">
                 <label class="form-label" for="usuario">Usuario</label>
                 <input type="text" class="form-control" id="usuario" formControlName="usuario">
-                @if(usuario?.hasError('required') && usuario?.touched){
+                @if(usuario?.touched && usuario?.hasError('required')){
                      <small class="text-danger">Usuario obligatorio</small>
                  }
+                 @if (usuario?.touched && usuario?.hasError('minlength')) {
+                    <small class="text-danger">
+                        Mínimo 4 caracteres
+                    </small>
+                    }
             </div>
             <div class="input-clave">
                 <label class="form-label" for="clave">Clave</label>

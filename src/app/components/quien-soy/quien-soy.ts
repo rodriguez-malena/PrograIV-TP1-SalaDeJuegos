@@ -13,7 +13,7 @@ export class QuienSoy implements OnInit {
 
   constructor(private alumnoService : AlumnoService){}
 
-  alumno?: AlumnoResponse;
+  alumno!: AlumnoResponse;
 
   ngOnInit(): void {
     this.alumnoService.obtenerAlumno().subscribe(respuesta => {

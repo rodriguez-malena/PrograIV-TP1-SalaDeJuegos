@@ -5,9 +5,9 @@ import { map } from "rxjs";
 
 
 export function usuarioExisteAsyncValidator(usuariosService: UsuariosService): AsyncValidatorFn  {
-    return (control: AbstractControl) => { // control representa al input 
-      const usuario = control.value; // .value extrae el valor del input y se asigna a usuario
-      return usuariosService.traerUsuarios(usuario) // devuelve una lista de usuarios
+    return (control: AbstractControl) => { 
+      const usuario = control.value;
+      return usuariosService.traerUsuarios(usuario) 
       .pipe( // pipe es el intercepta la comunicación entre el observable y el que esta escuchando
         map(usuarios => { /* Con map obtenemos el valor en tráfico 
           antes de que se lo pase al observable.
@@ -22,3 +22,21 @@ export function usuarioExisteAsyncValidator(usuariosService: UsuariosService): A
       );
     };
   }
+  export function usuarioNoExisteAsyncValidator(usuariosService: UsuariosService): AsyncValidatorFn {
+
+  return (control: AbstractControl) => {
+
+    const usuario = control.value;
+
+    return usuariosService.traerUsuarios(usuario).pipe(
+      map(usuarios => {
+
+        if (usuarios.length === 0) {
+          return { usuarioNoExiste: 'Usuario no encontrado' };
+        }
+
+        return null;
+      })
+    );
+  };
+}

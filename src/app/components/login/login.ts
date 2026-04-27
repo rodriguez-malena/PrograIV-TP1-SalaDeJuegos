@@ -15,14 +15,16 @@ export class Login implements OnInit {
 
   miLogin!: FormGroup
 
-  control = new FormControl('',[Validators.required, Validators.minLength(4)]);
-
   constructor(private usuarioService: UsuariosService, private fb: FormBuilder){};
 
   ngOnInit(): void {
     this.miLogin = this.fb.group({
       usuario:["",{
-        validators: [Validators.required],
+        validators: [
+            Validators.required,
+            Validators.minLength(4)
+        ],
+
         asyncValidators: usuarioExisteAsyncValidator(this.usuarioService),
         updateOn:'blur'
       }],

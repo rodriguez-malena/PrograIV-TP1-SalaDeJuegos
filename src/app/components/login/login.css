@@ -1,0 +1,113 @@
+.card {
+    width: 430px;
+    max-width: 95%;
+    margin: 5rem auto;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow:
+        0 15px 30px rgba(0,0,0,.22),
+        inset 0 0 12px rgba(255,255,255,.08);
+}
+
+.card-header {
+    background: #1E1B4B;
+    padding: 22px;
+    text-align: center;
+}
+
+.card-header h2 {
+    margin: 0;
+    color: whitesmoke;
+    font-size: 28px;
+    font-family: "Chakra Petch", sans-serif;
+    letter-spacing: 1px;
+}
+
+.card-body {
+    padding: 30px;
+}
+
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.form-control {
+    width: 95%;
+    padding: 10px 10px;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    background: rgba(255,255,255,.94);
+    color: #1E1B4B;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    transition: .25s ease;
+}
+
+.form-control:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 3px rgba(30,27,75,.18);
+}
+
+.text-danger {
+    color: #AB2968;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.botonera-login {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.7rem;
+}
+
+.btn-envio,
+.btn-reset {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.btn-envio {
+    background: #1E1B4B;
+    color: white;
+}
+
+.btn-envio:hover {
+    transform: translateY(-2px);
+    color: #AB2968;
+}
+
+.btn-reset {
+    background: white;
+    color: #1E1B4B;
+}
+
+.btn-reset:hover {
+    transform: translateY(-2px);
+    color: #AB2968;
+}
+
+/* deshabilitado */
+.btn-envio:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+    transform: none;
+}

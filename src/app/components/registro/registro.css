@@ -1,0 +1,143 @@
+
+.card {
+    width: 850px;
+    max-width: 95%;
+    margin: 5rem auto;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #AB2968;
+}
+
+.card-header {
+    background: #1E1B4B;
+    padding: 22px;
+    text-align: center;
+}
+
+.card-header h2 {
+    margin: 0;
+    color: whitesmoke;
+    font-size: 28px;
+    font-family: "Chakra Petch", sans-serif;
+    letter-spacing: 1px;
+}
+
+
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    margin-top: 1rem;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+/* columnas */
+.row {
+    display: flex;
+    gap: 3rem;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.col {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+    width: 100%;
+}
+
+.form-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+/* inputs */
+.form-control {
+    width: 100%;
+    padding: 12px 12px;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.92);
+    color: #1E1B4B;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    transition: 0.25s ease;
+}
+
+.form-control:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 3px rgba(30,27,75,0.18);
+}
+
+/* errores */
+.text-danger {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1E1B4B;
+}
+
+.botonera-registro {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 10px
+}
+
+.botonera-registro .btn-envio,
+.botonera-registro .btn-reset {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.botonera-registro .btn-envio {
+    background: #1E1B4B;
+    color: white;
+}
+
+.botonera-registro .btn-envio:hover {
+    transform: translateY(-2px);
+    color: #AB2968;
+}
+
+.botonera-registro .btn-reset {
+    background: white;
+    color: #1E1B4B;
+}
+
+.botonera-registro .btn-reset:hover {
+    transform: translateY(-2px);
+    color: #AB2968;
+}
+
+.botonera-registro .btn-envio:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+    transform: none;
+}

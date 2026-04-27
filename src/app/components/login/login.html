@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-header">
+        <h2>Hola Jugador</h2>
+    </div>
+    <div class="card-body">
+         <form [formGroup]="miLogin" (ngSubmit)="enviarForm()">
+            <div class="input-user">
+                <label class="form-label" for="usuario">Usuario</label>
+                <input type="text" class="form-control" id="usuario" formControlName="usuario">
+                @if(usuario?.hasError('required') && usuario?.touched){
+                     <small class="text-danger">Usuario obligatorio</small>
+                 }
+            </div>
+            <div class="input-clave">
+                <label class="form-label" for="clave">Clave</label>
+                <input type="password" class="form-control" id="clave" formControlName="clave">
+                @if(clave?.hasError('minlength') && clave?.touched){
+                    <small class="text-danger">Mínimo 6 caracteres</small>
+                    }
+            </div>
+
+            <div class="botonera-login">
+                <button [disabled]="miLogin.invalid" class="btn-envio" type="submit" routerLink="/quien-soy">
+                Enviar
+                </button>
+                <button class="btn-reset" type="button" (click)="resetearForm()">
+                Resetear
+                </button>
+            </div>
+        </form>
+    </div>
+       
+    
+
+</div>

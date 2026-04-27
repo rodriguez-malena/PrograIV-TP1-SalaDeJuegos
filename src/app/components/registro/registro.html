@@ -1,0 +1,82 @@
+
+<div class="card">
+  <div class="card-header">
+    <h2>Completa tu registro</h2>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="miRegistro" (ngSubmit)="enviarForm()"> <!-- llamamos a la directiva y le asignamos el valor del formulario -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-label" for="usuario">Usuario</label>
+            <input type="text" class="form-control" id="usuario" formControlName="usuario"> <!-- formControlName es dependiente del formGroup, indica el nombre del control en el formGroup -->
+            <small class="text-danger">
+              {{usuario?.getError('usuarioExiste')}} <!-- devuelve el error sino existe el usuario-->
+            </small>
+            @if(usuario?.hasError('required') && usuario?.touched){
+                     <small class="text-danger">Usuario obligatorio</small>
+                 }
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" formControlName="nombre">
+            @if (nombre?.hasError('pattern')) { <!-- Si no existe tira error, pattern es un validador de angular, devuelve un objeto -->
+              <small class="text-danger">Sólo debe contener solo letras</small>
+            }
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="mail">Mail</label>
+            <input type="email" class="form-control" id="mail" formControlName="mail">
+            @if (mail?.hasError('required') && mail?.touched) {
+                <small class="text-danger">El mail es obligatorio</small>
+              }
+            @if (mail?.hasError('email') && mail?.touched) {
+              <small class="text-danger">Formato inválido</small>
+            }
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group">
+            <label class="form-label" for="edad">Edad</label>
+            <input type="number" class="form-control" id="edad" formControlName="edad">
+            @if (edad?.hasError('min')) { 
+              <small class="text-danger">Debe ser mayor de 10 años</small>
+            }
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="clave">Clave</label>
+            <input type="password" class="form-control" id="clave" formControlName="clave">
+            @if (clave?.hasError('minlength')) { <!-- Devuelve un objeto con el valor esperado(requiredLength) y el recibido (actualLength) -->
+              <small class="text-danger">
+                La clave debe tener mínimo {{clave?.getError('minlength').requiredLength}} caracteres, usted ingreso 
+                {{clave?.getError('minlength').actualLength}} 
+              </small>
+            }
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="repiteClave">Repite clave</label>
+            <input type="password" class="form-control" id="repiteClave" formControlName="repiteClave">
+            <small class="text-danger">
+              {{repiteClave?.getError('noCoincide')}} <!-- muestra mi error (clave.validators.ts) si salta -->
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div class="botonera-registro">
+        <button  [disabled]="miRegistro.invalid" class="btn-envio" type="submit" routerLink="/login">
+          Enviar
+        </button>
+        <button class="btn-reset" type="button" (click)="resetearForm()">
+          Resetear
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

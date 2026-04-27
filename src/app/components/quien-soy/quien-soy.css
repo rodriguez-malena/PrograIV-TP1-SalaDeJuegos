@@ -1,0 +1,79 @@
+
+.card-quiensoy {
+    width: 720px;
+    max-width: 95%;
+    margin: 5rem auto;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    background: #1E1B4B;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,.08);
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.25),
+        inset 0 0 12px rgba(255,79,163,.18);
+
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-quiensoy h2 {
+    margin: 0;
+
+    color: white;
+    font-size: 40px;
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.card-quiensoy h3 {
+    margin: 0;
+    color: #FF4FA3;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.card-quiensoy img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #FF4FA3;
+    box-shadow: 0 12px 24px rgba(0,0,0,.22);
+}
+
+.card-quiensoy p {
+    margin: 0;
+    max-width: 560px;
+    color: whitesmoke;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+@media (max-width: 768px) {
+
+    .card-quiensoy {
+        padding: 28px 20px;
+    }
+
+    .card-quiensoy h2 {
+        font-size: 32px;
+    }
+
+    .card-quiensoy h3 {
+        font-size: 24px;
+    }
+
+    .card-quiensoy img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .card-quiensoy p {
+        font-size: 16px;
+    }
+}

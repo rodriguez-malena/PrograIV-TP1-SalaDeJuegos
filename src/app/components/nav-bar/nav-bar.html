@@ -4,9 +4,17 @@
         <h1>Sala de Juegos</h1>
     </div>
     <div class="nav-links">
-        <a routerLink="/home">Inicio</a>
-        <a routerLink="/login">Login</a>
-        <a routerLink="/registro">Registro</a>
-        <a routerLink="/quien-soy">¿Quien soy?</a>
+        
+        <a routerLink="/home">Juegos</a>
+        @if (auth.user()) {
+            <a routerLink="/quien-soy">¿Quien soy?</a>
+            <span>{{ auth.user()?.email }}</span>
+
+            <button class="btn-cerrar" (click)="logout()">
+                <img src="cerrar-sesion.png" alt="Icono de logout">
+            </button>
+        }
+        
+        
     </div>
 </div>

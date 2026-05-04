@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule, FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { usuarioExisteAsyncValidator } from '../../validators/usuario.validator';
-import { UsuariosService } from '../../servicios/usuario.service';
+import { ReactiveFormsModule, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../servicios/auth.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -15,45 +16,77 @@ export class Login implements OnInit {
 
   miLogin!: FormGroup
 
-  constructor(private usuarioService: UsuariosService, private fb: FormBuilder){};
+  constructor(private fb: FormBuilder,
+              private auth: AuthService,
+              private router: Router) {} 
 
   ngOnInit(): void {
     this.miLogin = this.fb.group({
-      usuario:["",{
-        validators: [
-            Validators.required,
-            Validators.minLength(4)
-        ],
-
-        asyncValidators: usuarioExisteAsyncValidator(this.usuarioService),
-        updateOn:'blur'
-      }],
-
+      email: ["",[Validators.required, Validators.email]],
       clave: ["",[Validators.required, Validators.minLength(6)]]
     })
   };
 
-    get usuario() {
-    return this.miLogin.get('usuario');
-    }
-
     get clave() {
     return this.miLogin.get('clave');
-  }
+    }
 
-  enviarForm() {
+    get email() {
+      return this.miLogin.get('email')
+    }
+
+  async enviarForm() {
 
     this.miLogin.markAllAsTouched();
     console.log("Intento de envío");
 
-    if (this.miLogin.invalid) { // invalid: devuelve válido o inválido
+    if (this.miLogin.invalid) { 
       console.log("Formulario inválido");
       return;
     }
     console.log("Envio exitoso");
+
+    const { email, clave } = this.miLogin.value;
+
+    try {
+
+      const respuesta = await this.auth.iniciarSesion(email, clave);
+      console.log("Usuario validado:", respuesta);
+
+      
+      this.router.navigate(['/home']);
+      
+      
+    } catch (error: any) {
+    
+            if (error.code === 'auth/invalid-credential') {
+    
+              Swal.fire({
+                icon: 'error',
+                title: 'Usuario inexistente',
+                text: 'Este correo no está registrado',
+                customClass: {
+                    confirmButton: 'btn-propio',
+                    popup: 'mi-modal',
+                    title: 'mi-titulo',                    
+                }
+              });
+
+            }}}
+
+    volverARegistro(){
+        this.router.navigate(['/registro'])
+    }
+
+    autocompletarYEnviar(email: string, clave: string) {
+      this.miLogin.patchValue({
+        email: email,
+        clave: clave
+      });
+
+      this.enviarForm();
+    }
+
+    
   }
 
-  resetearForm() {
-    this.miLogin.reset(); // método para reseteo
-  }
-}

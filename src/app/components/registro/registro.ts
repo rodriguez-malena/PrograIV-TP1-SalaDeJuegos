@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { UsuariosService } from '../../servicios/usuario.service';
-import { usuarioExisteAsyncValidator } from '../../validators/usuario.validator';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { confirmarClaveValidator } from '../../validators/clave.validator';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../servicios/auth.service';
+import { Router } from '@angular/router';
+import  Swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-registro',
@@ -16,43 +18,38 @@ export class Registro implements OnInit {
 
   miRegistro!: FormGroup;  // contiene todos los formControl
 
-  constructor(private usuariosService: UsuariosService, private fb: FormBuilder) {} 
+  constructor(private fb: FormBuilder,
+              private auth: AuthService,
+              private router: Router) {} 
   
   ngOnInit(): void {
       this.miRegistro = this.fb.group({
 
-        usuario: ["", {
-            validators: [Validators.required,
-              Validators.minLength(4)
-            ],
-            asyncValidators: usuarioExisteAsyncValidator(this.usuariosService),
-            updateOn: 'blur'
-        }],
-        nombre: ["", [Validators.required, Validators.pattern('^[a-zA-Z]+$')]], 
+        nombre: ["", [Validators.required, Validators.pattern('^[a-zA-Z]+$'), Validators.minLength(4)]], 
+        apellido: ["", [Validators.required, Validators.pattern('^[a-zA-Z]+$'),  Validators.minLength(4)]],
         edad: ["", [Validators.required, Validators.min(10), Validators.max(99)]],
-        mail: ["", [Validators.required, Validators.email]],
+        email: ["", [Validators.required, Validators.email]],
         clave: ["", [Validators.required, Validators.minLength(6)]],
         repiteClave: [null, Validators.required]
 
       }, { validators: confirmarClaveValidator() });
 
-       this.miRegistro.valueChanges.subscribe((valor) => { // Me subscribo al form y reacciono cada vez que cambie el valor
+       this.miRegistro.valueChanges.subscribe((valor) => { 
           console.log("El formulario ha cambiado", valor);
     });
   }
 
-  // geters para obtener los controles y acceder al formulario html
-  get usuario() {
-    return this.miRegistro.get('usuario');
-  }
   get nombre() {
     return this.miRegistro.get('nombre');
+  }
+  get apellido() {
+    return this.miRegistro.get('apellido');
   }
   get edad() {
     return this.miRegistro.get('edad');
   }
-  get mail() {
-    return this.miRegistro.get('mail');
+  get email() {
+    return this.miRegistro.get('email');
   }
   get clave() {
     return this.miRegistro.get('clave');
@@ -61,7 +58,7 @@ export class Registro implements OnInit {
     return this.miRegistro.get('repiteClave');
   }
 
-  enviarForm() {
+  async enviarForm() {
 
     this.miRegistro.markAllAsTouched();
     console.log("Intento de envío");
@@ -71,10 +68,65 @@ export class Registro implements OnInit {
       return;
     }
     console.log("Envio exitoso");
-  }
 
-  resetearForm() {
-    this.miRegistro.reset(); // método para reseteo
+    const { email, clave, nombre, apellido, edad } = this.miRegistro.value;
+
+    try {
+
+      const respuesta = await this.auth.registrar(email, clave);
+      console.log("Usuario creado:", respuesta);
+
+      await this.auth.guardarDatosUsuario(respuesta.user.uid, email, nombre, apellido, edad);
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Registro exitoso',
+        text: 'Usuario creado correctamente',
+        customClass: {
+                confirmButton: 'btn-propio',
+                popup: 'mi-modal',
+                title: 'mi-titulo',
+            }
+          
+      });
+
+      this.router.navigate(['/login']);
+
+    } catch (error: any) {
+
+        if (error.code === 'auth/email-already-in-use') {
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Usuario existente',
+            text: 'Este correo ya está registrado',
+            customClass: {
+                confirmButton: 'btn-propio',
+                popup: 'mi-modal',
+                title: 'mi-titulo',
+            }
+          });
+
+        } else {
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo completar el registro'
+          });
+
+  }}}
+
+    resetearForm() {
+      this.miRegistro.reset(); 
+    }
+
+    irALogin(){
+      this.router.navigate(['/login'])
+    }
+
+    volverAInicio(){
+      this.router.navigate(['/bienvenida'])
+    }
   }
-}
 

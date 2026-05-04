@@ -98,14 +98,15 @@
 .botonera-registro {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     gap: 1rem;
     margin-top: 1rem;
     padding: 10px
 }
 
-.botonera-registro .btn-envio,
-.botonera-registro .btn-reset {
+
+.botones-registro .btn-envio, .botones-registro .btn-aLogin {
     font-family: 'Poppins', sans-serif;
     font-size: 15px;
     font-weight: 700;
@@ -116,9 +117,10 @@
     transition: 0.25s ease;
 }
 
+
 .botonera-registro .btn-envio {
     background: #1E1B4B;
-    color: white;
+    color: whitesmoke;
 }
 
 .botonera-registro .btn-envio:hover {
@@ -126,18 +128,31 @@
     color: #AB2968;
 }
 
-.botonera-registro .btn-reset {
-    background: white;
+.botonera-registro .btn-aLogin {
+    background:transparent;
+    color: whitesmoke;
+}
+
+.botones-registro .btn-aLogin:hover {
+    transform: translateY(-2px);
     color: #1E1B4B;
 }
 
-.botonera-registro .btn-reset:hover {
-    transform: translateY(-2px);
-    color: #AB2968;
-}
-
-.botonera-registro .btn-envio:disabled {
+.botones-registro .btn-envio:disabled {
     opacity: .55;
     cursor: not-allowed;
     transform: none;
 }
+
+.iconos-registro .btn-volver, .iconos-registro .btn-reset {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: .25s ease;
+
+}
+
+.botonera-registro .btn-volver:hover, .botonera-registro .btn-reset:hover{
+    transform: translateY(-2px);
+}
+

@@ -1,5 +1,27 @@
 body{
     color: whitesmoke;
     background-color:#0c092a;
-    font-family: 'Poppins', sans-serif;;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-propio {
+    background: #AB2968;
+    color: whitesmoke;
+    padding: 10px 20px;
+    border-radius: 8px
+}
+
+.btn-propio:hover {
+  background-color: #0c092a;
+  transform: scale(1.05);
+}
+
+.mi-modal {
+  background: whitesmoke;
+  border-radius: 15px;
+}
+
+.mi-titulo {
+  color: #1E1B4B;
+  font-family:"Chakra Petch", sans-serif ;
 }

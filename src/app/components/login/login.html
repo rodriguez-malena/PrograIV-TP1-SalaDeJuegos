@@ -4,33 +4,50 @@
     </div>
     <div class="card-body">
          <form [formGroup]="miLogin" (ngSubmit)="enviarForm()">
-            <div class="input-user">
-                <label class="form-label" for="usuario">Usuario</label>
-                <input type="text" class="form-control" id="usuario" formControlName="usuario">
-                @if(usuario?.touched && usuario?.hasError('required')){
-                     <small class="text-danger">Usuario obligatorio</small>
-                 }
-                 @if (usuario?.touched && usuario?.hasError('minlength')) {
-                    <small class="text-danger">
-                        Mínimo 4 caracteres
-                    </small>
-                    }
+
+            <div class="input-mail">
+
+                <label class="form-label" for="email">Email</label>
+                <input type="email" class="form-control" id="email" formControlName="email">
+                @if (email?.hasError('required') && email?.touched) {
+                    <small class="text-danger">El email es obligatorio</small>
+                }
+                @if (email?.hasError('email') && email?.touched) {
+                <small class="text-danger">Formato inválido</small>
+                }
+
             </div>
+
             <div class="input-clave">
+
                 <label class="form-label" for="clave">Clave</label>
                 <input type="password" class="form-control" id="clave" formControlName="clave">
+
                 @if(clave?.hasError('minlength') && clave?.touched){
                     <small class="text-danger">Mínimo 6 caracteres</small>
                     }
             </div>
 
             <div class="botonera-login">
-                <button [disabled]="miLogin.invalid" class="btn-envio" type="submit" routerLink="/quien-soy">
-                Enviar
-                </button>
-                <button class="btn-reset" type="button" (click)="resetearForm()">
-                Resetear
-                </button>
+                <div class="botonera-ingreso">
+                    <button [disabled]="miLogin.invalid" class="btn-envio" type="submit">
+                        Iniciar sesión
+                    </button>
+                    <button class="btn-volver" type="button" (click)="volverARegistro()">
+                        No tengo cuenta
+                    </button>
+                </div>
+                <div class="botonera-acceso-rapido">
+                    <button class="btn-accesoRapido" type="button" (click)="autocompletarYEnviar('user@test.com', '123456')">
+                        Entrar como User
+                    </button>
+                    <button class="btn-accesoRapido" type="button" (click)="autocompletarYEnviar('admin@test.com', '123456')">
+                        Entrar como Admin
+                    </button>
+                    <button class="btn-accesoRapido" type="button" (click)="autocompletarYEnviar('tester@test.com', '123456')">
+                        Entrar como Tester
+                    </button>
+                </div>
             </div>
         </form>
     </div>

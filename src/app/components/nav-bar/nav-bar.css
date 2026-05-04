@@ -5,12 +5,9 @@
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
-
     padding: 14px 28px;
-
     background: radial-gradient(circle, rgba(171,41,104,1) 0%, rgba(21,22,33,1) 100%);
     border-bottom: 1px solid rgba(255,255,255,.08);
-
     box-shadow: 0 8px 18px rgba(0,0,0,.18);
 }
 
@@ -61,11 +58,26 @@
     transform: translateY(-2px);
 }
 
+.btn-cerrar {
+    background-color: transparent;
+    border: none;
+    transition: .25s ease;
+    cursor: pointer;
+}
+
+.btn-cerrar:hover {
+    transform: translateY(-2px);
+}
+
+
+.btn-cerrar img {
+    width: 25px;
+}
 
 .navbar .nav-links a.active,
 .navbar .nav-links a[aria-current="page"] {
     background: #FF4FA3;
-    color: white;
+    color: whitesmoke;
 }
 
 

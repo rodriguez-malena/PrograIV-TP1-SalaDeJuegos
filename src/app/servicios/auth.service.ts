@@ -46,13 +46,13 @@ export class AuthService {
       edad: datosUsuario?.['edad']
     }
 
-    localStorage.setItem('user', JSON.stringify(userData))
+    sessionStorage.setItem('user', JSON.stringify(userData))
     this.user.set(userData)
     return res
   }
   
   getUser() {
-    const userString = localStorage.getItem('user');
+    const userString = sessionStorage.getItem('user');
     if (userString) {
       return JSON.parse(userString);
     }

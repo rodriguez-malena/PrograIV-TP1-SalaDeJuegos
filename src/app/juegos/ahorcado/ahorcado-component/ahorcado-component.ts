@@ -32,7 +32,6 @@ export class AhorcadoComponent implements OnInit {
     tiempoFinal: number = 0;
     tiempoTotal: number = 0;
     cantidadLetras: number = 0;
-    usuarioActual: string = '';
     resultado: string = '';
     usarPista: boolean = false;
 
@@ -46,7 +45,7 @@ export class AhorcadoComponent implements OnInit {
         }
       }
     }
-    
+
     obtenerUsuario(){
       return this.auth.getUser().nombre
     }
@@ -67,7 +66,6 @@ export class AhorcadoComponent implements OnInit {
 
     esCorrecta(letra:string) {
       return this.letrasAdivinadas.includes(letra)
-         
       }
 
     esIncorrecta(letra:string) {
@@ -82,8 +80,8 @@ export class AhorcadoComponent implements OnInit {
         }
       } 
       this.jugando = false;
-      this.resultado = "Ganó partida"
-      this.guardarPartida()
+      this.resultado = "Ganó partida";
+      this.guardarPartida();
       
       Swal.fire({
       title: '¡Felicitaciones!',
@@ -110,46 +108,41 @@ export class AhorcadoComponent implements OnInit {
       if (resultado.dismiss === Swal.DismissReason.cancel) {
         this.volverAJuegos()
       }
-
     });
-
    }
 
    verificarDerrota(){
      if(this.cantidadErrores === this.erroresPermitidos){
-      this.jugando = false;
-      this.resultado = "Perdió partida"
-      this.guardarPartida();
+        this.jugando = false;
+        this.resultado = "Perdió partida"
+        this.guardarPartida();
 
-      Swal.fire({
-        title: 'Perdiste',
-        text: `La palabra era: ${this.palabraSeleccionada}`,
-        icon: 'error',
-        confirmButtonText: 'Jugar otra vez',
-        showCancelButton: true,
-        cancelButtonText: 'Volver al menú',
-        allowOutsideClick: false,
+        Swal.fire({
+          title: 'Perdiste',
+          text: `La palabra era: ${this.palabraSeleccionada}`,
+          icon: 'error',
+          confirmButtonText: 'Jugar otra vez',
+          showCancelButton: true,
+          cancelButtonText: 'Volver al menú',
+          allowOutsideClick: false,
 
-        customClass: {
-          confirmButton: 'btn-propio',
-          popup: 'mi-modal',
-          title: 'mi-titulo',
-          cancelButton:'btn-propio'
+          customClass: {
+            confirmButton: 'btn-propio',
+            popup: 'mi-modal',
+            title: 'mi-titulo',
+            cancelButton:'btn-propio'
+          }
+
+      }).then((resultado) => {
+
+        if (resultado.isConfirmed) {
+          this.reiniciarJuego();
         }
 
-
-    }).then((resultado) => {
-
-      if (resultado.isConfirmed) {
-        this.reiniciarJuego();
-      }
-
-      if (resultado.dismiss === Swal.DismissReason.cancel) {
-        this.volverAJuegos()
-      }
-
-    });
-
+        if (resultado.dismiss === Swal.DismissReason.cancel) {
+          this.volverAJuegos()
+        }
+      });
   }
 }
 
@@ -203,15 +196,12 @@ export class AhorcadoComponent implements OnInit {
           popup: 'mi-modal',
           title: 'mi-titulo',                    
         }
-      });
-      
+      });  
     }
-
     
     ngOnInit(): void {
       this.mostrarReglas()
       this.iniciarJuego()
-      
     }
     
     hayPartidaActiva(): boolean {

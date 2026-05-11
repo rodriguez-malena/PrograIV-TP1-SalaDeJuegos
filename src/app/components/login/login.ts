@@ -21,8 +21,8 @@ export class Login implements OnInit {
 
   ngOnInit(): void {
     this.miLogin = this.fb.group({
-      email: ["",[Validators.required, Validators.email]],
-      clave: ["",[Validators.required, Validators.minLength(6)]]
+      email: ["",[Validators.required, Validators.email, Validators.maxLength(30)]],
+      clave: ["",[Validators.required, Validators.minLength(6), Validators.maxLength(10)]]
     })
   };
 

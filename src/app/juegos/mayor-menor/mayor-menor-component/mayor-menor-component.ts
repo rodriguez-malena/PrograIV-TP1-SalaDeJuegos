@@ -20,12 +20,8 @@ export class MayorMenorComponent implements OnInit{
               private cd: ChangeDetectorRef,
               private router: Router,
               private auth: AuthService,
-              private partida: PartidaMayorMenor
-  ){
+              private partida: PartidaMayorMenor){}
 
-  }
-
-    usuarioActual: string = '';
     jugando: boolean = false;
     cartasAcertadas: string[] = [];
     vidas: number = 3;
@@ -41,15 +37,16 @@ export class MayorMenorComponent implements OnInit{
 
     crearMazo() {
       this.cartaService.traerMazo().subscribe((respuesta)=>{
-        this.deckId = respuesta.deck_id
-        console.log("DECK ID:" + this.deckId);
-        this.sacarCarta()
-      })
+          this.deckId = respuesta.deck_id
+          console.log("DECK ID:" + this.deckId);
+          this.sacarCarta()
+        })
     }
 
     sacarCarta(){
       this.cargando = false
       console.log("usando deck:", this.deckId);
+
       this.cartaService.darCarta(this.deckId).subscribe((respuesta) => {
       this.cartaActual = respuesta.cards[0]
 
@@ -68,7 +65,7 @@ export class MayorMenorComponent implements OnInit{
 
       setTimeout(() => {
         this.cd.detectChanges();
-      });
+      }, 1000);
             
       let valorActual = this.obtenerValor(this.cartaActual);
       let valorNueva = this.obtenerValor(this.cartaSiguiente);
@@ -81,7 +78,7 @@ export class MayorMenorComponent implements OnInit{
         this.puntos++;
         this.cartasAcertadas.push(this.cartaSiguiente.code);
       }
-      else if(this.eleccionJugador == 'igual' &&valorNueva == valorActual){
+      else if(this.eleccionJugador == 'igual' && valorNueva == valorActual){
         this.puntos += 2;
         this.cartasAcertadas.push(this.cartaSiguiente.code);
       }
@@ -93,7 +90,6 @@ export class MayorMenorComponent implements OnInit{
 
 
       setTimeout(()=>{
-
         this.cartaActual = this.cartaSiguiente;
         this.cartaSiguiente = null;
         this.mostrarNuevaCarta = false;

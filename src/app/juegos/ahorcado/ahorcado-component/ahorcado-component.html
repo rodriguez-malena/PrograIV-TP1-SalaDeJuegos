@@ -24,12 +24,14 @@
     <div class="contenedor-abecedario">
         @for (letra of abecedario; track $index) {
             <button (click)="seleccionarLetra(letra)"
-            [disabled]="esCorrecta(letra) || esIncorrecta(letra)"
-                            [ngClass]="{
+                    [disabled]="esCorrecta(letra) || esIncorrecta(letra)"
+                    [ngClass]="{
                                 'correcta': esCorrecta(letra),
-                                'incorrecta': esIncorrecta(letra) }">{{ letra }}</button>
-                }
-            </div>
+                                'incorrecta': esIncorrecta(letra) }">
+                    {{ letra }}
+            </button>
+        }
+    </div>
             
             <div class="contenedor-errores">
                 <p>Errores <span>{{ cantidadErrores }} / {{erroresPermitidos}}</span></p>

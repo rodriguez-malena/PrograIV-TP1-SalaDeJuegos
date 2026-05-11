@@ -17,7 +17,5 @@ export class CartasService {
 
   darCarta(deck_id : string){
     return this.http.get<any>(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=1`)
-
   }
-
 }

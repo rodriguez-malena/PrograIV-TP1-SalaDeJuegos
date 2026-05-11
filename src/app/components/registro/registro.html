@@ -58,6 +58,9 @@
             @if (email?.hasError('email') && email?.touched) {
               <small class="text-danger">Formato inválido</small>
             }
+             @if (email?.touched && email?.hasError('maxlength')) {
+              <small class="text-danger">Máximo 30 caracteres permitidos</small>
+            }
           </div>
         </div>
 

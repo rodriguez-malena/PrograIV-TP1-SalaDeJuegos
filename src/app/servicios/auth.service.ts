@@ -29,8 +29,7 @@ export class AuthService {
   async iniciarSesion(correo: string, clave: string) {
     const res = await signInWithEmailAndPassword(this.auth, correo, clave);
     
-    //NUEVO
-    // buscar datos adicionales en firestore
+    
     const uid = res.user.uid;
 
     const docRef = doc(this.firestore, 'usuarios', uid);

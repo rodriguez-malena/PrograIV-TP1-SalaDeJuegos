@@ -8,7 +8,7 @@
         <a routerLink="/home">Juegos</a>
         @if (auth.user()) {
             <a routerLink="/quien-soy">¿Quien soy?</a>
-            <span>{{ auth.user()?.email }}</span>
+            <span>{{ auth.getUser().nombre }}</span>
 
             <button class="btn-cerrar" (click)="logout()">
                 <img src="cerrar-sesion.png" alt="Icono de logout">

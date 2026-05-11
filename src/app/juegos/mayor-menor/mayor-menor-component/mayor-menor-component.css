@@ -1,0 +1,142 @@
+.contenedor-general{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 20px;
+}
+
+
+.titulo-juego h2{
+    font-family: "Turret Road", sans-serif;
+    font-size: 35px;
+    color: whitesmoke;
+}
+
+.zona-juego{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+.contenedor-cartas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    min-height: 340px;
+}
+
+.carta1, .carta2{
+    width: 220px;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carta1 img, .carta2 img{
+    width: 220px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+.carta1 img:hover, .carta2 img:hover{
+    transform: scale(1.03);
+}
+
+.contenedor-opciones{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contenedor-opciones button{
+    padding: 15px 15px;
+    border: none;
+    border-radius: 12px;
+    font-family: "Poppins",sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    background-color: whitesmoke;
+    box-shadow: 0 4px 0 #cfcfcf;
+}
+
+.contenedor-opciones button:not(:disabled):hover{
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #cfcfcf;
+    background-color: #ececec;
+}
+
+.contenedor-opciones button:active{
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #cfcfcf;
+}
+
+.contenedor-opciones button:disabled{
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.boton-seleccionado{
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #AB2968 !important;
+    background-color: #AB2968 !important;
+}
+
+
+.contenedor-estados{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.card-puntos, .card-vidas{
+    width: 150px;
+    padding: 15px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(5px);
+    text-align: center;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+}
+
+.card-puntos span,.card-vidas span{
+    font-size: 18px;
+    color: whitesmoke;
+}
+
+.card-puntos p, .card-vidas p{
+    font-size: 38px;
+    font-family: "Turret Road", sans-serif;
+    font-weight: bold;
+    color: #AB2968;
+    margin-top: 10px;
+}
+
+
+.btn-volver{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 12px;
+    background: #1E1B4B;
+    color: white;
+    font-family: "Turret Road", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.btn-volver:hover{
+    transform: translateY(-2px);
+    color: #FF4FA3;
+}

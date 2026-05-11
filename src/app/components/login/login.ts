@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 import { AuthService } from '../../servicios/auth.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -8,7 +7,7 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })

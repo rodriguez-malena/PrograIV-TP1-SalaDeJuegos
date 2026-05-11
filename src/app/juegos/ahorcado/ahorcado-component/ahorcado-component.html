@@ -1,0 +1,48 @@
+<div class="contenedor-general">
+    <div class="titulo-juego">
+        <h2>El Ahorcado</h2>
+    </div>
+
+    <div class="contenedor-juego">
+        <div class="contenedor-dibujo">
+            <img [src]="cantidadErrores + '_ahorcado.png'">
+        </div>
+
+        <div class="contenedor-letras">
+            <div class="contenedor-guiones">
+            @for (letra of palabraSeleccionada; track $index) {
+                <span>
+                @if (letrasAdivinadas.includes(letra)) {
+                    {{ letra }}
+                } @else {
+                    _
+                }
+                </span>
+            }
+        </div>
+
+    <div class="contenedor-abecedario">
+        @for (letra of abecedario; track $index) {
+            <button (click)="seleccionarLetra(letra)"
+            [disabled]="esCorrecta(letra) || esIncorrecta(letra)"
+                            [ngClass]="{
+                                'correcta': esCorrecta(letra),
+                                'incorrecta': esIncorrecta(letra) }">{{ letra }}</button>
+                }
+            </div>
+            
+            <div class="contenedor-errores">
+                <p>Errores <span>{{ cantidadErrores }} / {{erroresPermitidos}}</span></p>
+            </div>
+            
+            <button class="btn-volver" (click)="volverAJuegos()">
+                Volver
+            </button>
+            
+        </div>
+        <div class="contenedor-pista">
+            <button class="btn-pista" (click)="darPista()">
+                Pista
+            </button>
+        </div>
+</div>

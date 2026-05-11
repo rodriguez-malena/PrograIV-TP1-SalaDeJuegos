@@ -18,7 +18,7 @@
     margin: 0;
     color: whitesmoke;
     font-size: 28px;
-    font-family: "Chakra Petch", sans-serif;
+    font-family: "Turret Road", sans-serif;
     letter-spacing: 1px;
 }
 
@@ -38,7 +38,7 @@
     border: none;
 }
 
-/* columnas */
+
 .row {
     display: flex;
     gap: 3rem;
@@ -68,7 +68,7 @@
     color: white;
 }
 
-/* inputs */
+
 .form-control {
     width: 100%;
     padding: 12px 12px;
@@ -87,7 +87,7 @@
     box-shadow: 0 0 0 3px rgba(30,27,75,0.18);
 }
 
-/* errores */
+
 .text-danger {
     font-family: 'Poppins', sans-serif;
     font-size: 13px;

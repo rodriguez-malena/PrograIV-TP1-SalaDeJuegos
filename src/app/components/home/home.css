@@ -1,0 +1,96 @@
+.card-general {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-general h2 {
+    font-family: "Turret Road", sans-serif;
+    font-size: 50px;
+    
+}
+.card-juegos-opciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.card-juego {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 20px;
+    border-radius: 18px;
+    width: 250px;
+    min-height: 230px;
+    background: #1E1B4B;
+    border: 1px solid rgba(255,255,255,.08);
+    box-shadow: 0 18px 35px rgba(0,0,0,.25),
+        inset 0 0 12px rgba(255,79,163,.12);
+    transition: .25s ease;
+}
+
+.card-juego:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 45px rgba(0,0,0,.35),
+        inset 0 0 16px rgba(255,79,163,.25);
+}
+
+.card-titulo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card-titulo img {
+    width: 35px;
+    height: 35px;
+}
+
+.card-titulo h3 {
+    margin: 0;
+    font-size: 28px;
+    color: whitesmoke;
+    font-family: "Turret Road", sans-serif;
+}
+
+.card-descripcion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.card-descripcion p {
+    margin: 0;
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    color: whitesmoke;
+    line-height: 1.4;
+}
+
+
+.card-descripcion button {
+    align-self:center;
+    background: #FF4FA3;
+    border: none;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-family: "Turret Road", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+
+.card-descripcion button:hover {
+    transform: translateY(-2px);
+    color: #1E1B4B;
+}

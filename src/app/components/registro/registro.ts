@@ -16,7 +16,7 @@ import  Swal from 'sweetalert2'
 
 export class Registro implements OnInit {
 
-  miRegistro!: FormGroup;  // contiene todos los formControl
+  miRegistro!: FormGroup;  
 
   constructor(private fb: FormBuilder,
               private auth: AuthService,
@@ -25,11 +25,11 @@ export class Registro implements OnInit {
   ngOnInit(): void {
       this.miRegistro = this.fb.group({
 
-        nombre: ["", [Validators.required, Validators.pattern('^[a-zA-Z]+$'), Validators.minLength(4)]], 
-        apellido: ["", [Validators.required, Validators.pattern('^[a-zA-Z]+$'),  Validators.minLength(4)]],
+        nombre: ["", [Validators.required, Validators.pattern('^[a-zA-Z]+$'), Validators.minLength(4), Validators.maxLength(10)]], 
+        apellido: ["", [Validators.required, Validators.pattern('^[a-zA-Z]+$'),  Validators.minLength(4), Validators.maxLength(10)]],
         edad: ["", [Validators.required, Validators.min(10), Validators.max(99)]],
         email: ["", [Validators.required, Validators.email]],
-        clave: ["", [Validators.required, Validators.minLength(6)]],
+        clave: ["", [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
         repiteClave: [null, Validators.required]
 
       }, { validators: confirmarClaveValidator() });
@@ -63,7 +63,7 @@ export class Registro implements OnInit {
     this.miRegistro.markAllAsTouched();
     console.log("Intento de envío");
 
-    if (this.miRegistro.invalid) { // invalid: devuelve válido o inválido
+    if (this.miRegistro.invalid) { 
       console.log("Formulario inválido");
       return;
     }

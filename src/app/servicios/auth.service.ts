@@ -1,6 +1,6 @@
 import { Injectable, inject, signal} from '@angular/core';
 import { Auth } from '@angular/fire/auth';
-import { Firestore, setDoc, doc } from '@angular/fire/firestore';
+import { Firestore, setDoc, doc, getDoc } from '@angular/fire/firestore';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { signOut } from 'firebase/auth';
 
@@ -29,9 +29,22 @@ export class AuthService {
   async iniciarSesion(correo: string, clave: string) {
     const res = await signInWithEmailAndPassword(this.auth, correo, clave);
     
+    //NUEVO
+    // buscar datos adicionales en firestore
+    const uid = res.user.uid;
+
+    const docRef = doc(this.firestore, 'usuarios', uid);
+
+    const docSnap = await getDoc(docRef);
+
+    const datosUsuario = docSnap.data();
+
     const userData = {
       uid: res.user.uid,
-      email: res.user.email
+      email: res.user.email,
+      nombre: datosUsuario?.['nombre'],
+      apellido: datosUsuario?.['apellido'],
+      edad: datosUsuario?.['edad']
     }
 
     localStorage.setItem('user', JSON.stringify(userData))
@@ -45,7 +58,8 @@ export class AuthService {
       return JSON.parse(userString);
     }
     return null;
-}
+  }
+  
   async guardarDatosUsuario(uid: string, correo: string, nombre: string, apellido : string, edad: number) {
   await setDoc(doc(this.firestore, 'usuarios', uid), {
     uid,

@@ -13,10 +13,8 @@
     background: #1E1B4B;
     border-radius: 18px;
     border: 1px solid rgba(255,255,255,.08);
-    box-shadow:
-        0 18px 35px rgba(0,0,0,.25),
+    box-shadow: 0 18px 35px rgba(0,0,0,.25),
         inset 0 0 12px rgba(255,79,163,.18);
-
     font-family: 'Poppins', sans-serif;
 }
 
@@ -31,7 +29,7 @@
     margin: 0;
     text-align: center;
     color: #FF4FA3;
-    font-family: "Chakra Petch", sans-serif;
+    font-family:  "Turret Road", sans-serif;
     font-size: 42px;
     font-weight: 700;
     letter-spacing: 1px;
@@ -89,7 +87,6 @@
     color: #FF4FA3;
 }
 
-/* RESPONSIVE */
 
 @media (max-width: 768px) {
 

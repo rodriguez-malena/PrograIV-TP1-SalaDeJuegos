@@ -32,6 +32,16 @@ export const routes: Routes = [
         canActivate:[authGuard]
     },
     {
+        path: 'ahorcado',
+        loadChildren:() => import('./juegos/ahorcado/ahorcado-module').then(m => m.AhorcadoModule),
+        canActivate:[authGuard]
+    },
+    {
+        path:'mayor-menor',
+        loadChildren:() => import('./juegos/mayor-menor/mayor-menor-module').then(m => m.MayorMenorModule),
+        canActivate:[authGuard]
+    },
+    {
         path:'**',
         loadComponent: () => import('./components/error/error').then(m => m.Error)
         

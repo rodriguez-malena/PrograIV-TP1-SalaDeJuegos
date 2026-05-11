@@ -8,7 +8,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './bienvenida.css',
 })
 export class Bienvenida {
-  test() {
-  console.log('click');
-}
+ 
 }

@@ -1,0 +1,168 @@
+
+.contenedor-general {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.titulo-juego h2 {
+    font-size: 35px;
+    color: whitesmoke;
+    font-family: "Turret Road", sans-serif;;
+}
+
+.contenedor-juego {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    
+}
+
+.contenedor-dibujo img {
+    width: 300px;
+    height: 300px;
+}
+
+.contenedor-dibujo {
+    width: 300px;
+    height: 300px;
+}
+
+.contenedor-letras {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    width: 500px;
+    height: 500px;
+}
+
+.contenedor-guiones {
+    display: flex;
+    gap: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: whitesmoke;
+}
+
+.contenedor-abecedario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.contenedor-abecedario button {
+    background-color: whitesmoke;
+    color: #AB2968;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #cfcfcf;
+    transition: all 0.15s ease;
+}
+
+.contenedor-abecedario button:not(:disabled):hover {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #cfcfcf;
+    background-color: #ececec;
+}
+
+.contenedor-abecedario button:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #cfcfcf;
+}
+
+.contenedor-abecedario button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.contenedor-abecedario .correcta {
+    background-color: rgb(5, 255, 59);
+    color: whitesmoke;
+}
+
+.contenedor-abecedario .incorrecta {
+    background-color: red;
+    color: whitesmoke;
+}
+
+.contenedor-errores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: 1rem auto;
+    padding: 12px 22px;
+    background: rgba(255, 79, 163, 0.12);
+    border: 1px solid rgba(255, 79, 163, 0.35);
+    border-radius: 14px;
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.18),
+        inset 0 0 10px rgba(255,79,163,.08);
+    font-family:"Turret Road", sans-serif;
+}
+
+.contenedor-errores p {
+    margin: 0;
+    color: whitesmoke;
+    font-size: 16px;
+    font-weight: 600;
+}
+.contenedor-errores span {
+    color: #FF4FA3;
+    font-size: 18px;
+    font-weight: 700;
+    
+}
+
+.btn-volver{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 12px;
+    background: #1E1B4B;
+    color: whitesmoke;
+    font-family: "Turret Road", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.btn-pista {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+     padding: 12px 18px;
+    border: none;
+    border-radius: 12px;
+    background: #1E1B4B;
+    color: whitesmoke;
+    font-family: "Turret Road", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s ease
+}
+
+.btn-volver:hover, .btn-pista:hover{
+    transform: translateY(-2px);
+    color: #FF4FA3;
+}

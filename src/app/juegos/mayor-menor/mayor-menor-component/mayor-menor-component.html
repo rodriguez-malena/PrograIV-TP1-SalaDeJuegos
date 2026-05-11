@@ -1,0 +1,59 @@
+<div class="contenedor-general">
+    <div class="titulo-juego">
+        <h2>Mayor/Menor</h2>
+    </div>   
+
+    <div class="zona-juego">
+        <div class="contenedor-cartas">
+        <div class="carta1">
+            <p *ngIf="cargando">Cargando carta...</p>
+
+                <img
+                    *ngIf="!cargando"
+                    [src]="cartaActual?.image">
+            </div>
+            <div class="carta2">
+                <img
+                *ngIf="mostrarNuevaCarta"
+                [src]="cartaSiguiente?.image">
+            </div>
+
+        </div>
+
+        <div class="contenedor-estados">
+    
+           <div class="card-puntos">
+               <span>Puntos</span>
+               <p>{{ puntos }}</p>
+           </div>
+    
+           <div class="card-vidas">
+               <span>Vidas</span>
+               <p>{{ vidas }}</p>
+           </div>
+    
+       </div>
+    </div>
+    <div class="contenedor-opciones">
+        <button [ngClass]="{ 
+            'boton-seleccionado': eleccionJugador === 'mayor'}"
+            [disabled]="eleccionJugador !== ''"
+            (click)="elegirMayor()">Mayor</button>
+
+        <button [ngClass]="{
+            'boton-seleccionado': eleccionJugador === 'menor'}"
+            [disabled]="eleccionJugador !== ''"
+            (click)="elegirMenor()">Menor</button>
+
+        <button [ngClass]="{
+            'boton-seleccionado': eleccionJugador === 'igual'}"
+            [disabled]="eleccionJugador !== ''"
+            (click)="elegirIgual()">Igual</button>
+
+        <button [disabled]="!eleccionJugador" 
+            (click)="mostrarCarta()">Mostrar carta</button>
+    </div>
+
+
+    <button class="btn-volver" (click)="volverAJuegos()">Volver</button>
+</div>

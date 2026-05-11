@@ -32,11 +32,11 @@ export class AuthService {
     
     const uid = res.user.uid;
 
-    const docRef = doc(this.firestore, 'usuarios', uid);
+    const usuarioDocRef = doc(this.firestore, 'usuarios', uid);
 
-    const docSnap = await getDoc(docRef);
+    const usuarioDocSnap = await getDoc(usuarioDocRef);
 
-    const datosUsuario = docSnap.data();
+    const datosUsuario = usuarioDocSnap.data();
 
     const userData = {
       uid: res.user.uid,

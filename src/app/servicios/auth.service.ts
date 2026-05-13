@@ -1,8 +1,6 @@
 import { Injectable, inject, signal} from '@angular/core';
-import { Auth } from '@angular/fire/auth';
 import { Firestore, setDoc, doc, getDoc } from '@angular/fire/firestore';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
-import { signOut } from 'firebase/auth';
+import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 
 
 @Injectable({
@@ -74,7 +72,7 @@ export class AuthService {
 
   cerrarSesion() {
     signOut(this.auth); 
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
     this.user.set(null);
   }
 

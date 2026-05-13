@@ -1,0 +1,50 @@
+
+<div *ngIf="authService.user() && !mostrarChat" class="contenedorChatIcono" (click)="mostrarChat=true">
+   <img src="chat.png" alt="Icono de chat" class="chatIcono">
+
+</div>
+
+<div class="card-container"
+     *ngIf="authService.user() && mostrarChat" >
+
+  <div class="card-header">
+    CHAT
+    <div class="iconoCerrar" (click)="mostrarChat=false">
+      x
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div id="contenedorMensajes" class="contenedor-mensajes"
+        *ngFor="let mensaje of mensajes">
+      
+          <div class="mensaje" 
+              [ngClass]="(authService.user()?.uid == mensaje.uid) ? 'enviado' : 'recibido'">    
+
+              <small class="nombre-emisor">
+                {{ mensaje.usuario }}
+              </small>
+              <p>
+                {{ mensaje.mensaje }}
+              </p>
+              <small class="hora-msj">
+                {{ mensaje.fecha | date:'HH:mm' }}
+              </small>
+          </div>
+        
+    </div>
+  </div>
+
+  <form class="card-footer" (ngSubmit)="enviarMensaje()">
+      <input type="text" class="form-control" placeholder="Ingrese su mensaje" [(ngModel)]="nuevoMensaje" 
+       [ngModelOptions]="{standalone : true}">
+
+       <div class="input-group-append" (click)="enviarMensaje()">
+          
+        <span class="input-group-text" id="basic-addon2">
+            <img class="imgEnviar" src="enviar-mensaje.png" alt="Enviar mensaje" width="20px">
+        </span>
+
+        </div>
+  </form>
+</div>

@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AhorcadoComponent } from './ahorcado-component';
+import { Chat } from './chat';
 
-describe('AhorcadoComponent', () => {
-  let component: AhorcadoComponent;
-  let fixture: ComponentFixture<AhorcadoComponent>;
+describe('Chat', () => {
+  let component: Chat;
+  let fixture: ComponentFixture<Chat>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AhorcadoComponent],
+      imports: [Chat],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AhorcadoComponent);
+    fixture = TestBed.createComponent(Chat);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

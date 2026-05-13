@@ -1,21 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ChangeDetectorRef } from '@angular/core';
-import { PartidaService } from '../services-ahorcado/partida-service';
-import { AuthService } from '../../../servicios/auth.service';
+import { AuthService } from '../../servicios/auth.service';
+import Swal from 'sweetalert2';
+import { PartidaAhorcadoService } from './partida-ahorcado-service';
+
+
 
 @Component({
-  selector: 'app-ahorcado-component',
+  selector: 'app-ahorcado',
   standalone: false,
-  templateUrl: './ahorcado-component.html',
-  styleUrl: './ahorcado-component.css',
+  templateUrl: './ahorcado.html',
+  styleUrl: './ahorcado.css',
 })
+export class Ahorcado implements OnInit{
 
-export class AhorcadoComponent implements OnInit {
-    constructor(private router:Router, 
+  constructor(private router:Router, 
                 private cdr: ChangeDetectorRef,
-                private partida: PartidaService,
+                private partida: PartidaAhorcadoService,
                 private auth: AuthService){}
 
     abecedario: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", 
@@ -228,3 +229,5 @@ export class AhorcadoComponent implements OnInit {
 
     
 }
+
+

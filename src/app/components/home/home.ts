@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { AhorcadoRoutingModule } from "../../juegos/ahorcado/ahorcado-routing-module";
-
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-home',
-  imports: [AhorcadoRoutingModule],
+  imports: [RouterModule ],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

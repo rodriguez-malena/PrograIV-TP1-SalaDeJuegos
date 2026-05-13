@@ -1,22 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { CartasService } from '../services-mayorMenor/cartas-service';
-import { ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PartidaMayorMenor } from '../services-mayorMenor/partida-mayor-menor';
-import { AuthService } from '../../../servicios/auth.service';
+import { AuthService } from '../../servicios/auth.service';
+import { Cartas } from './serviciosMayorMenor/cartas';
+import { PartidaMayorMenor } from './serviciosMayorMenor/partida-mayor-menor';
 import Swal from 'sweetalert2';
 
 
-
 @Component({
-  selector: 'app-mayor-menor-component',
+  selector: 'app-mayor-menor',
   standalone: false,
-  templateUrl: './mayor-menor-component.html',
-  styleUrl: './mayor-menor-component.css',
+  templateUrl: './mayor-menor.html',
+  styleUrl: './mayor-menor.css',
 })
-export class MayorMenorComponent implements OnInit{
-  
-  constructor(private cartaService: CartasService,
+export class MayorMenor implements OnInit {
+  constructor(private cartaService: Cartas,
               private cd: ChangeDetectorRef,
               private router: Router,
               private auth: AuthService,

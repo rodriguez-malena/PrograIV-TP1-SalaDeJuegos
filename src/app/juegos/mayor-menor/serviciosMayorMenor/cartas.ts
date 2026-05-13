@@ -6,9 +6,7 @@ const API_MAZO = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
 @Injectable({
   providedIn: 'root',
 })
-
-
-export class CartasService {
+export class Cartas {
   constructor(private http: HttpClient){};
 
   traerMazo(){

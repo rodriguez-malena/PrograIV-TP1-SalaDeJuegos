@@ -23,9 +23,7 @@ export class Chat implements OnInit {
 
   ngOnInit(): void {
     this.chatService.traerMensajes().subscribe((data) => {
-     
-     
-    console.log('STREAM DATA:', data);
+    
     this.mensajes = data;
 
     setTimeout(() => {

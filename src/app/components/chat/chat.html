@@ -1,5 +1,6 @@
 
-<div *ngIf="authService.user() && !mostrarChat" class="contenedorChatIcono" (click)="mostrarChat=true">
+<div *ngIf="authService.user() && !mostrarChat" class="contenedorChatIcono"
+     (click)="mostrarChat=true">
    <img src="chat.png" alt="Icono de chat" class="chatIcono">
 
 </div>
@@ -36,13 +37,15 @@
   </div>
 
   <form class="card-footer" (ngSubmit)="enviarMensaje()">
-      <input type="text" class="form-control" placeholder="Ingrese su mensaje" [(ngModel)]="nuevoMensaje" 
-       [ngModelOptions]="{standalone : true}">
+      <input type="text" class="form-control" placeholder="Ingrese su mensaje" 
+        [(ngModel)]="nuevoMensaje"  name="mensaje">
 
-       <div class="input-group-append" (click)="enviarMensaje()">
+       <div class="contenedor-envio">
           
-        <span class="input-group-text" id="basic-addon2">
+        <span class="input-envio">
+          <button type="submit">
             <img class="imgEnviar" src="enviar-mensaje.png" alt="Enviar mensaje" width="20px">
+          </button>
         </span>
 
         </div>

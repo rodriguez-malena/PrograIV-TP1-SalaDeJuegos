@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgClass, NgIf, NgFor, DatePipe} from "@angular/common";
 import { AuthService } from '../../servicios/auth.service';
 import { ChatService } from '../../servicios/chat-service';
-
 
 @Component({
   selector: 'app-chat',
@@ -19,7 +18,8 @@ export class Chat implements OnInit {
   mensajes: any =[];
 
   constructor(public authService : AuthService,
-              private chatService : ChatService){}
+              private chatService : ChatService,
+              private cd : ChangeDetectorRef){}
 
   ngOnInit(): void {
     this.chatService.traerMensajes().subscribe((data) => {
@@ -30,7 +30,7 @@ export class Chat implements OnInit {
 
     setTimeout(() => {
       this.scrollHastaElUltimoElemento();
-    }, 50);
+    }, 20);
 
   })
     
@@ -50,16 +50,15 @@ export class Chat implements OnInit {
       usuario: usuario?.nombre,
       mensaje: this.nuevoMensaje,
       fecha: new Date()
-    
-    }
-     try {
-        const res = await this.chatService.guardarMensaje(mensaje);
-        console.log('Guardado:', res);
-    } catch (err) {
-      console.error( 'Error:', err);
     }
 
+    const res = await this.chatService.guardarMensaje(mensaje);
+    console.log('Guardado:', res);
     this.nuevoMensaje = '';
+    this.cd.detectChanges()
+    
+    
+
   }
 
   scrollHastaElUltimoElemento(){
@@ -67,7 +66,7 @@ export class Chat implements OnInit {
 
     if(elementos.length === 0){
     return;
-  }
+    }
     let ultimoElemento: any = elementos[elementos.length-1];
     
     let toppos = ultimoElemento.offsetTop;

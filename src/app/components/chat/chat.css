@@ -53,8 +53,12 @@
     font-size: 0.95rem;
 }
 
+.contenedor-envio button{
+    background-color: transparent;
+    border: none;
+}
 
-.input-group-text {
+.input-envio {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,11 +66,11 @@
     transition: all 0.2s;
 }
 
-.input-group-text:hover {
+.input-envio:hover {
     transform: scale(1.05);
 }
 
-.input-group-text:active {
+.input-envio:active {
     transform: scale(0.92);
 }
 

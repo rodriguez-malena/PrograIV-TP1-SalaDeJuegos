@@ -15,11 +15,11 @@
   </div>
 
   <div class="card-body">
-    <div id="contenedorMensajes" class="contenedor-mensajes"
-        *ngFor="let mensaje of mensajes">
+    <div id="contenedorMensajes" class="contenedor-mensajes">
       
           <div class="mensaje" 
-              [ngClass]="(authService.user()?.uid == mensaje.uid) ? 'enviado' : 'recibido'">    
+              *ngFor="let mensaje of mensajes"    
+              [ngClass]="(authService.user()?.uid == mensaje.uid) ? 'enviado' : 'recibido'">
 
               <small class="nombre-emisor">
                 {{ mensaje.usuario }}
@@ -28,7 +28,7 @@
                 {{ mensaje.mensaje }}
               </p>
               <small class="hora-msj">
-                {{ mensaje.fecha | date:'HH:mm' }}
+                {{ mensaje.fecha?.toDate() | date:'HH:mm' }}
               </small>
           </div>
         

@@ -1,10 +1,12 @@
 .card-container {
     width: 300px;
-    height: 700px;
+    height: 450px;
     position: fixed;
-    right: 0.5rem;
-    bottom: 0.5rem;
-    background-color: rgb(36, 16, 80);
+    right:20px;
+    bottom: 20px;
+    background: rgba(20, 20, 20, 0.55); 
+    backdrop-filter: blur(12px);        
+    -webkit-backdrop-filter: blur(12px);
     display: flex;
     flex-direction: column;
     border-radius: 10px;
@@ -13,10 +15,11 @@
 }
 
 .card-header{
-    background-color: #FF4FA3;
+    background-color: #AB2968;
     color: whitesmoke;
     font-weight: 700;
     padding: 1rem;
+    font-family: "Turret Road", sans-serif;
     font-size: 1.1rem;
     font-weight: 700;
     position: relative;
@@ -29,16 +32,15 @@
     padding: 0.5rem;
     flex: 1;
     overflow: hidden;
-    background-color: beige;
+    background-color: transparent;
 }
 
 .card-footer {
-    background-color: white;
+    background-color: #1E1B4B;
     padding: 0.7rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    border-top: 1px solid #e5e5e5;
 }
 
 .form-control {
@@ -53,7 +55,6 @@
 
 
 .input-group-text {
-  
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,7 +81,7 @@
    display: block;
    float: right;
    align-self: flex-end;
-   background-color:  #1777e4;;
+   background-color:  #f671a8;;
    color: whitesmoke;
    min-width: 50.01%;
    border-radius: 10px;
@@ -154,7 +155,7 @@
     right: 0.5rem;
     top: 0rem;
     cursor: pointer;
-    
+
     transition: transform 0.2s;
 }
 

@@ -12,7 +12,7 @@ export class ChatService {
   traerMensajes(){
     const chatRef = collection(this.firestore, 'chat')
 
-    const orden = query(chatRef, orderBy('fecha'))
+    const orden = query(chatRef, orderBy('fecha', 'asc'))
 
     return collectionData(orden, { idField: 'id' });
   }

@@ -22,17 +22,17 @@ export class Chat implements OnInit {
               private chatService : ChatService){}
 
   ngOnInit(): void {
-    this.chatService.traerMensajes().subscribe({
-     next: (data) => {
-      console.log('🔥 STREAM DATA:', data);
-      this.mensajes = data;
-    },
-    error: (err) => console.error('❌ STREAM ERROR:', err)
-  });
+    this.chatService.traerMensajes().subscribe((data) => {
+     
+     
+    console.log('STREAM DATA:', data);
+    this.mensajes = data;
 
     setTimeout(() => {
-        this.scrollHastaElUltimoElemento();
-      },50)
+      this.scrollHastaElUltimoElemento();
+    }, 50);
+
+  })
     
 }
 
@@ -54,9 +54,9 @@ export class Chat implements OnInit {
     }
      try {
         const res = await this.chatService.guardarMensaje(mensaje);
-        console.log('GUARDADO:', res);
+        console.log('Guardado:', res);
     } catch (err) {
-      console.error('❌ ERROR GUARDANDO:', err);
+      console.error( 'Error:', err);
     }
 
     this.nuevoMensaje = '';

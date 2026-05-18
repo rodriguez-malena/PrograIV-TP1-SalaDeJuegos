@@ -23,7 +23,7 @@
     align-items: center;
     text-align: center;
     border-radius: 18px;
-    width: min(250px,95%);
+    width: 220px;
     min-height: 120px;
     padding: clamp(8px, 2vw, 12px);
     border: #AB2968;
@@ -71,8 +71,8 @@
 }
 
 .contenedor-rosco {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     justify-content: center;
     gap: 2rem;
@@ -80,9 +80,10 @@
 }
 
 .zona-rosco {
-    position: relative;
-    width: min(600px, 95vw);
-    height: min(600px, 95vw) ;
+   position: relative;
+    width: 600px;
+    height: 600px;
+    flex-shrink: 0;
 }
 
 .zona-rosco svg {

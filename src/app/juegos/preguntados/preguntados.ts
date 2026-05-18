@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, OnDestroy } from '@angular/core';
 import { BanderasService } from './banderas-service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { AuthService } from '../../servicios/auth.service';
   templateUrl: './preguntados.html',
   styleUrl: './preguntados.css',
 })
-export class Preguntados implements OnInit {
+export class Preguntados implements OnInit, OnDestroy {
 
   jugando: boolean = false;
   gano: boolean = false;
@@ -71,8 +71,8 @@ export class Preguntados implements OnInit {
     const listaPaises = this.paises();
 
     const paisesDisponibles = listaPaises.filter(pais =>
+
       !this.respuestasCorrectas.includes(pais.name.common) && !this.respuestasIncorrectas.includes(pais.name.common));
-      
 
     const correcto = paisesDisponibles[Math.floor(Math.random() * paisesDisponibles.length)]
     
@@ -90,7 +90,7 @@ export class Preguntados implements OnInit {
       }
     }
 
-     this.opcionesPaises.set( opciones.sort(() => Math.random() - 0.5));
+     this.opcionesPaises.set(opciones.sort(() => Math.random() - 0.5));
   
   }
 
@@ -198,18 +198,16 @@ export class Preguntados implements OnInit {
   }
 
   iniciarTemporizador(){
-    clearInterval(this.intervalo);
-
     this.tiempoInicio = Date.now();
     this.intervalo = setInterval(() => {
 
     this.tiempoActual = Math.floor((Date.now() - this.tiempoInicio) / 1000 );
-
+    
       if(this.tiempoActual >= this.tiempoLimite){
         this.jugando = false;
         this.gano = false;
-        this.guardarPartida();
         clearInterval(this.intervalo);
+        this.guardarPartida();
 
       Swal.fire({
             title: 'Perdiste',
@@ -293,6 +291,9 @@ export class Preguntados implements OnInit {
       return this.jugando;
     }
 
-  
+  ngOnDestroy(): void {
+    clearInterval(this.intervalo);
+    this.jugando = false;
+  }
 
 }

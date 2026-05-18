@@ -186,19 +186,17 @@ export class ElRosco implements OnInit, OnDestroy{
       this.intervalo = setInterval(() => {
   
         this.tiempoActual = Math.floor(
-          (Date.now() - this.tiempoInicio) / 1000
-        );
-
+          (Date.now() - this.tiempoInicio) / 1000);
 
         if (!this.jugando) {
           clearInterval(this.intervalo);
           return;
         }
-          if(this.tiempoActual >= this.tiempoLimite){
-    
-            this.jugando = false;
-            this.gano = false;
-            clearInterval(this.intervalo);
+
+        if(this.tiempoActual >= this.tiempoLimite){
+          this.jugando = false;
+          this.gano = false;
+          clearInterval(this.intervalo);
     
           Swal.fire({
                 title: 'Perdiste',

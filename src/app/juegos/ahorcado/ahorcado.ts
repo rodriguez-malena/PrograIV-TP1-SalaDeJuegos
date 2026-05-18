@@ -235,6 +235,7 @@ export class Ahorcado implements OnInit{
     
 
     volverAJuegos() {
+      this.jugando = false;
       this.router.navigate(['/home'])
     }
 

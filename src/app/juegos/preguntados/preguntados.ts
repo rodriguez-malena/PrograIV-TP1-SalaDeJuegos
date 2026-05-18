@@ -21,6 +21,7 @@ export class Preguntados implements OnInit {
   puntaje: number = 0;
   vidas: number = 3;
   respuestasCorrectas: string[] = [];
+  respuestasIncorrectas: string[] = [];
   cantidadErrores: number = 0;
   paises = signal<Pais[]>([]);
   paisCorrecto = signal<any | null>(null);
@@ -61,8 +62,8 @@ export class Preguntados implements OnInit {
   cargarBanderas(){
     this.jugando = true
     this.banderasService.obtenerBanderas().subscribe((respuesta) => {
-        this.paises.set(respuesta);
-        this.generarOpciones()
+      this.paises.set(respuesta);
+      this.generarOpciones()
     })
   }
 
@@ -70,15 +71,17 @@ export class Preguntados implements OnInit {
     const listaPaises = this.paises();
 
     const paisesDisponibles = listaPaises.filter(pais =>
-      !this.respuestasCorrectas.includes(pais.name.common));
+      !this.respuestasCorrectas.includes(pais.name.common) && !this.respuestasIncorrectas.includes(pais.name.common));
+      
 
     const correcto = paisesDisponibles[Math.floor(Math.random() * paisesDisponibles.length)]
+    
     this.paisCorrecto.set(correcto)
 
     const opciones = [correcto.name.common]
 
     while(opciones.length < 4){
-      const paisRandom = listaPaises[Math.floor(Math.random() * listaPaises.length)];
+      const paisRandom = paisesDisponibles[Math.floor(Math.random() * paisesDisponibles.length)];
 
       const nombrePais = paisRandom.name.common;
 
@@ -87,9 +90,7 @@ export class Preguntados implements OnInit {
       }
     }
 
-     this.opcionesPaises.set(
-      opciones.sort(() => Math.random() - 0.5)
-    );
+     this.opcionesPaises.set( opciones.sort(() => Math.random() - 0.5));
   
   }
 
@@ -103,6 +104,7 @@ export class Preguntados implements OnInit {
     } else {
       this.vidas--
       this.cantidadErrores++
+      this.respuestasIncorrectas.push(paisElegido);
     }
     
     this.verificarVictoria();
@@ -125,8 +127,7 @@ export class Preguntados implements OnInit {
   }
 
   esIncorrecta(opcion : string){
-    return this.respondio &&
-          opcion === this.opcionSeleccionada && opcion !== this.paisCorrecto()?.name.common;
+    return this.respondio && opcion === this.opcionSeleccionada && opcion !== this.paisCorrecto()?.name.common;
   }
 
   verificarVictoria(){
@@ -138,7 +139,7 @@ export class Preguntados implements OnInit {
 
        Swal.fire({
               title: '¡Felicitaciones!',
-              text: 'Ganaste el preguntados',
+              text: `Ganaste con ${this.puntaje} puntos`,
               icon: 'success',
               confirmButtonText: 'Jugar otra vez',
               showCancelButton: true,
@@ -202,11 +203,9 @@ export class Preguntados implements OnInit {
     this.tiempoInicio = Date.now();
     this.intervalo = setInterval(() => {
 
-    this.tiempoActual = Math.floor(
-      (Date.now() - this.tiempoInicio) / 1000
-    );
-      if(this.tiempoActual >= this.tiempoLimite){
+    this.tiempoActual = Math.floor((Date.now() - this.tiempoInicio) / 1000 );
 
+      if(this.tiempoActual >= this.tiempoLimite){
         this.jugando = false;
         this.gano = false;
         this.guardarPartida();
@@ -244,6 +243,8 @@ export class Preguntados implements OnInit {
   }
 
   volverAJuegos(){
+    clearInterval(this.intervalo);
+    this.jugando = false;
     this.router.navigate(['./home'])
   }
 

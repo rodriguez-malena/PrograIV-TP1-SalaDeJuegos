@@ -7,6 +7,7 @@
             <th>Errores</th>
             <th>Vidas</th>
             <th>Tiempo</th>
+            <th>Fecha</th>
             <th>Resultado</th>
         </tr>
     </thead>
@@ -20,6 +21,7 @@
                 <td>{{ resultado.cantidadErrores }}</td>
                 <td>{{ resultado.vidas }}</td>
                 <td>{{ resultado.tiempoTotal }}</td>
+                <td>{{ resultado.fecha?.toDate() | date: 'short' }}</td>
                 <td>
                     {{ resultado.gano ? 'Ganó' : 'Perdió' }}
                 </td>

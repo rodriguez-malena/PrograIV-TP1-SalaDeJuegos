@@ -80,11 +80,17 @@ export class MayorMenor implements OnInit {
     mostrarCarta(){
       this.cartaService.darCarta(this.deckId).subscribe((respuesta)=>{
 
+      
       this.cartaSiguiente = respuesta.cards[0];
+
+      if(this.cartaSiguiente.code === this.cartaActual.code){
+        this.mostrarCarta();
+        return;
+    }
       console.log("CARTA NUEVA: ", this.cartaSiguiente)
       
       
-        this.mostrarNuevaCarta = true;
+      this.mostrarNuevaCarta = true;
   
             
       let valorActual = this.obtenerValor(this.cartaActual);
@@ -192,7 +198,7 @@ export class MayorMenor implements OnInit {
                 
     } else if(this.puntos === 5){
       this.jugando = false
-      this.gano = false
+      this.gano = true
       this.guardarPartida()
 
       Swal.fire({
@@ -261,6 +267,7 @@ export class MayorMenor implements OnInit {
 
  
   volverAJuegos(){
+    this.jugando = false;
     this.router.navigate(['./home'])
   }
 

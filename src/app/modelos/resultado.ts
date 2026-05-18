@@ -8,6 +8,6 @@ export interface Resultado {
   puntaje: number;
   vidas: number;
   tiempoTotal: string;
-  fecha: Date;
+  fecha: any;
 
 }

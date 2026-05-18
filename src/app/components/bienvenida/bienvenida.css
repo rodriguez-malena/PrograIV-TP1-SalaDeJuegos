@@ -5,11 +5,10 @@
     justify-content: center;
     align-items: center;
     gap: 2.5rem;
-    width: 800px;
-    max-width: 95%;
+    width: min(800px, 95%);
     min-height: 380px;
     margin: 6rem auto 0;
-    padding: 45px;
+    padding: clamp(16px, 3vw, 45px);
     background: #1E1B4B;
     border-radius: 18px;
     border: 1px solid rgba(255,255,255,.08);
@@ -30,7 +29,7 @@
     text-align: center;
     color: #FF4FA3;
     font-family:  "Turret Road", sans-serif;
-    font-size: 42px;
+    font-size: clamp(28px, 4vw, 42px);
     font-weight: 700;
     letter-spacing: 1px;
 }
@@ -40,7 +39,7 @@
     max-width: 620px;
     text-align: center;
     color: rgba(255,255,255,.88);
-    font-size: 19px;
+    font-size:  clamp(15px, 2.2vw, 19px);
     line-height: 1.6;
 }
 
@@ -53,7 +52,9 @@
 
 .botonera-inicio .btn-inicio,
 .botonera-inicio .btn-registro {
-    min-width: 190px;
+    min-width: 160px;
+    width: 100%;
+    max-width: 220px;
     padding: 14px 24px;
     border-radius: 14px;
     border: none;
@@ -87,29 +88,6 @@
     color: #FF4FA3;
 }
 
-
-@media (max-width: 768px) {
-
-    .card-inicio {
-        padding: 30px 20px;
-        min-height: auto;
-    }
-
-    .card-bienvenida h2 {
-        font-size: 32px;
-    }
-
-    .card-bienvenida p {
-        font-size: 17px;
-    }
-
-    .botonera-inicio {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .botonera-inicio .btn-inicio,
-    .botonera-inicio .btn-registro {
-        width: 100%;
-    }
+* {
+    box-sizing: border-box;
 }

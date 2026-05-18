@@ -1,11 +1,11 @@
-/* NAVBAR */
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
-    padding: 14px 28px;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 14px clamp(12px, 3vw, 28px);
     background: radial-gradient(circle, rgba(171,41,104,1) 0%, rgba(21,22,33,1) 100%);
     border-bottom: 1px solid rgba(255,255,255,.08);
     box-shadow: 0 8px 18px rgba(0,0,0,.18);
@@ -16,6 +16,8 @@
     display: flex;
     align-items: center;
     gap: .9rem;
+    flex: 1;
+    min-width: 180px;
 }
 
 .logo img {
@@ -28,9 +30,8 @@
     margin: 0;
     color: whitesmoke;
     font-family: "Turret Road", sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: .8px;
+    font-size: clamp(18px, 2.5vw, 28px);
+    
 }
 
 .nav-links {
@@ -38,6 +39,7 @@
     align-items: center;
     gap: .8rem;
     flex-wrap: wrap;
+    min-width: 220px;
 }
 
 .navbar .nav-links a {
@@ -46,9 +48,23 @@
     color: whitesmoke;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
+    font-size: clamp(12px, 1.8vw, 15px);
+    font-weight: 600;
+    white-space: nowrap;
+    transition: .25s ease;
+}
+
+.navbar .nav-links span {
+    padding: 10px 14px;
+    border-radius: 12px;
+    color: whitesmoke;
+    font-family: 'Poppins', sans-serif;
     font-size: 15px;
     font-weight: 600;
-    transition: .25s ease;
+    display: flex;
+    align-items: center;
+    opacity: 0.9;
+    white-space: nowrap;
 }
 
 
@@ -63,6 +79,7 @@
     border: none;
     transition: .25s ease;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .btn-cerrar:hover {
@@ -78,24 +95,4 @@
 .navbar .nav-links a[aria-current="page"] {
     background: #FF4FA3;
     color: whitesmoke;
-}
-
-
-@media (max-width: 768px) {
-
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 18px;
-    }
-
-    .logo h1 {
-        font-size: 24px;
-    }
-
-    .nav-links {
-        width: 100%;
-        gap: .6rem;
-    }
-
 }

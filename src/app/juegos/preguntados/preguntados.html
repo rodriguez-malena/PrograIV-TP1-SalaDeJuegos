@@ -12,7 +12,6 @@
                     <img [src]="paisCorrecto()?.flags.png" width="300">
                 </div>
 
-                
                 <div class="contenedor-opciones">
                     @for (opcion of opcionesPaises(); track $index) {
                         <button (click)="analizarRespuesta(opcion)"

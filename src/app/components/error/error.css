@@ -43,6 +43,6 @@
 
 .contenedor-error button:hover {
     transform: translateY(-2px) scale(1.03);
-    color: #1E1B4B;
+    color: #1E1B4B ;
 }
 

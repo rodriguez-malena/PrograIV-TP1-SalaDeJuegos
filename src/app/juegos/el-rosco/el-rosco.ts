@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PreguntasService } from './preguntas-service';
 import { AuthService } from '../../servicios/auth.service';
 import { ResultadosService } from '../../servicios/resultados-service';
@@ -12,7 +12,7 @@ import { PreguntaRosco } from './pregunta-rosco';
   templateUrl: './el-rosco.html',
   styleUrl: './el-rosco.css',
 })
-export class ElRosco implements OnInit{
+export class ElRosco implements OnInit, OnDestroy{
 
   constructor(private preguntasService: PreguntasService,
               private resultadosService: ResultadosService,
@@ -29,7 +29,7 @@ export class ElRosco implements OnInit{
   tiempoInicio: number = 0;
   tiempoActual: number = 0;
   intervalo: any;
-  tiempoLimite: number = 300;
+  tiempoLimite: number = 200;
   puntaje: number = 0;
   radio: number = 230;
   centroX: number = 300;
@@ -66,9 +66,9 @@ export class ElRosco implements OnInit{
   
   obtenerPreguntas() {
     this.iniciarTemporizador();
+
     this.preguntasService.traerPreguntas().subscribe((respuesta) => {
       this.preguntasRosco = respuesta;
-
       this.preguntaActual = this.preguntasRosco[this.indiceActual];
     })
   }
@@ -86,9 +86,11 @@ export class ElRosco implements OnInit{
       this.preguntaActual.estado = "incorrecta";
       this.vidas--;
       this.cantidadErrores++;
+
       if(this.vidas === 0){
         this.gano = false;
         this.finalizarJuego()
+        return;
       }
     }
     
@@ -102,6 +104,7 @@ export class ElRosco implements OnInit{
     this.preguntaActual.estado = "pasada";
     this.pasarSiguientePregunta()
   }
+  
 
   pasarSiguientePregunta() {
 
@@ -179,16 +182,22 @@ export class ElRosco implements OnInit{
 
   iniciarTemporizador(){  
       this.tiempoInicio = Date.now();
+
       this.intervalo = setInterval(() => {
   
         this.tiempoActual = Math.floor(
           (Date.now() - this.tiempoInicio) / 1000
         );
-          if(this.tiempoActual >= this.tiempoLimite && this.jugando){
+
+
+        if (!this.jugando) {
+          clearInterval(this.intervalo);
+          return;
+        }
+          if(this.tiempoActual >= this.tiempoLimite){
     
             this.jugando = false;
             this.gano = false;
-            this.guardarPartida();
             clearInterval(this.intervalo);
     
           Swal.fire({
@@ -243,6 +252,8 @@ export class ElRosco implements OnInit{
       
   
     volverAJuegos() {
+      clearInterval(this.intervalo);
+      this.jugando = false;
       this.router.navigate(['/home'])
     }
 
@@ -265,6 +276,11 @@ export class ElRosco implements OnInit{
   hayPartidaActiva(): boolean {
     return this.jugando;
     }
+
+  ngOnDestroy(): void {
+    clearInterval(this.intervalo);
+    this.jugando = false;
+  }
 
 
 }

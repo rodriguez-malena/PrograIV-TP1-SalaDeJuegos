@@ -1,16 +1,19 @@
 .contenedor-general {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
+    gap: 1.5rem;
+    padding: 1rem;
 }
 
 .contenedor-juego {
     display: flex;
-    gap: 3rem;
+    flex-wrap: wrap;
+    gap: 2rem;
     align-items: center;
     justify-content: center;
-    position: relative;
 }
 
 .tituloMasJuego {
@@ -27,33 +30,35 @@
 
 .zona-juego {
     display: flex;
-    gap: 3rem;
+    flex-wrap: wrap;
+    gap: 2rem;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: clamp(12px, 2vw, 20px);
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     
 }
 
-.contenedor-dibujo img {
-    width: 300px;
-    height: 300px;
+.contenedor-dibujo {
+    width: clamp(180px, 30vw, 300px);
+    height: auto;
 }
 
-.contenedor-dibujo {
-    width: 300px;
-    height: 300px;
+.contenedor-dibujo img {
+    width: 100%;
+    height: auto;
 }
+
 
 .contenedor-letras {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
-    width: 500px;
-    height: 500px;
+    gap: 2rem;
+    width: min(500px,95%);
+    height: auto;
 }
 
 .contenedor-guiones {
@@ -79,10 +84,10 @@
     font-family: 'Poppins', sans-serif;
     border: none;
     border-radius: 8px;
-    width: 40px;
-    height: 40px;
+    width: clamp(32px, 6vw, 40px);
+    height: clamp(32px, 6vw, 40px);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 2vw, 1rem);
     cursor: pointer;
     box-shadow: 0 4px 0 #cfcfcf;
     transition: all 0.15s ease;
@@ -115,6 +120,9 @@
 }
 
 .contenedor-estados {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
@@ -149,20 +157,22 @@
 }
 
 .contenedor-vidas img {
-    width: 180px;
+    width: clamp(120px, 25vw, 180px);
+
 }
 
 .btn-volver{
     position: absolute;
-    bottom: 20px;
+    bottom: 12px;
     left: 20px;
-    padding: 12px 18px;
+    padding: 10px 14px;
     border: none;
     border-radius: 12px;
     background: #1E1B4B;
     color: whitesmoke;
     font-family: "Turret Road", sans-serif;
     font-weight: 600;
+    font-size: 14px;
     cursor: pointer;
     transition: .25s ease;
 }

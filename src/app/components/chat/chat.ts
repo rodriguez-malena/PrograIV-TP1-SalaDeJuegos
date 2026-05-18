@@ -1,8 +1,9 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgClass, NgIf, NgFor, DatePipe} from "@angular/common";
 import { AuthService } from '../../servicios/auth.service';
 import { ChatService } from '../../servicios/chat-service';
+import { Mensaje } from '../../modelos/mensaje';
 
 @Component({
   selector: 'app-chat',
@@ -15,15 +16,15 @@ export class Chat implements OnInit {
   
   mostrarChat : boolean = false
   nuevoMensaje: string = '';
-  mensajes: any =[];
+  mensajes = signal<Mensaje[]>([])
 
   constructor(public authService : AuthService,
               private chatService : ChatService,
-              private cd : ChangeDetectorRef){}
+              ){}
 
   ngOnInit(): void {
-    this.chatService.traerMensajes().subscribe((data) => {
-    this.mensajes = data;
+    this.chatService.traerMensajes().subscribe((respuesta: any[]) => {
+    this.mensajes.set(respuesta);
 
     setTimeout(() => {
       this.scrollHastaElUltimoElemento();
@@ -45,34 +46,26 @@ export class Chat implements OnInit {
     let mensaje = {
       uid: usuario?.uid,
       usuario: usuario?.nombre,
-      mensaje: this.nuevoMensaje,
-      fecha: new Date()
+      mensaje: this.nuevoMensaje.trim(),
     }
 
     const res = await this.chatService.guardarMensaje(mensaje);
     console.log('Guardado:', res);
     this.nuevoMensaje = '';
-    this.cd.detectChanges()
     
     
 
   }
 
   scrollHastaElUltimoElemento(){
-    let elementos = document.getElementsByClassName('mensaje')
-
-    if(elementos.length === 0){
-    return;
-    }
-    let ultimoElemento: any = elementos[elementos.length-1];
-    
-    let toppos = ultimoElemento.offsetTop;
 
    const contenedor = document.getElementById('contenedorMensajes');
 
-   if(contenedor){
-     contenedor.scrollTop = toppos;
-   }
+   if(!contenedor){
+      return;
+    }
+
+    contenedor.scrollTop = contenedor.scrollHeight;
 
   }
 

@@ -46,7 +46,10 @@
                 </svg>
                  <div class="contenedor-respuesta">
 
-                    <input class="respuestaUsuario" type="text"[(ngModel)]="respuestaUsuario">
+                    <input class="respuestaUsuario" type="text"
+                        [(ngModel)]="respuestaUsuario"
+                        [maxLength]="preguntaActual.respuesta.length">
+                        
                     <div class="botones">
                         <button (click)="respuestaUsuario.trim() ? verificarRespuesta() : pasapalabra()">
                             {{ respuestaUsuario.trim() ? 'Enviar' : 'Pasapalabra' }}

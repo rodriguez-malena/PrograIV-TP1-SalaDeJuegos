@@ -2,11 +2,12 @@ import { ChangeDetectorRef, Component, OnInit, signal} from '@angular/core';
 import { AlumnoService } from '../../servicios/alumno.service';
 import { AlumnoResponse } from '../../modelos/alumno-response';
 import { CommonModule } from '@angular/common';
+import { JuegosRoutingModule } from "../../juegos/juegos-routing-module";
 
 
 @Component({
   selector: 'app-quien-soy',
-  imports: [CommonModule],
+  imports: [CommonModule, JuegosRoutingModule],
   templateUrl: './quien-soy.html',
   styleUrl: './quien-soy.css',
 })

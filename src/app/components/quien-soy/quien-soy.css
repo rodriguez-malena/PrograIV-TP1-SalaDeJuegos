@@ -1,6 +1,6 @@
 
 .card-quiensoy {
-    width: 720px;
+    width: 520px;
     max-width: 95%;
     margin: 5rem auto;
     padding: 40px;
@@ -11,10 +11,7 @@
     background: #1E1B4B;
     border-radius: 18px;
     border: 1px solid rgba(255,255,255,.08);
-    box-shadow:
-        0 18px 35px rgba(0,0,0,.25),
-        inset 0 0 12px rgba(255,79,163,.18);
-
+    box-shadow: 0 18px 35px rgba(0,0,0,.25), inset 0 0 12px rgba(255,79,163,.18);
     text-align: center;
     font-family: 'Poppins', sans-serif;
 }
@@ -25,7 +22,6 @@
     font-size: 40px;
     font-family: "Turret Road", sans-serif;
     font-weight: 700;
-    letter-spacing: 1px;
 }
 
 .card-quiensoy h3 {
@@ -52,27 +48,85 @@
     line-height: 1.7;
 }
 
+.card-juego {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background: #1E1B4B;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,.08);
+    box-shadow: 0 18px 35px rgba(0,0,0,.25), inset 0 0 12px rgba(255,79,163,.18);
+    font-family: 'Poppins', sans-serif;
+    width: 720px;
+    margin: 5rem auto;
+    max-width: 95%;
 
-@media (max-width: 768px) {
+}
 
-    .card-quiensoy {
-        padding: 28px 20px;
-    }
+.card-juego h3 {
+    margin: 0;
+    color: white;
+    font-size: 32px;
+    font-family: "Turret Road", sans-serif;
+    text-align: center;
+}
 
-    .card-quiensoy h2 {
-        font-size: 32px;
-    }
+.card-juego span {
+    color: #FF4FA3;
+}
 
-    .card-quiensoy h3 {
-        font-size: 24px;
-    }
+.card-juego h4 {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #FF4FA3;
+    font-size: 22px;
+    font-weight: 700;
+}
 
-    .card-quiensoy img {
-        width: 180px;
-        height: 180px;
-    }
+.card-juego p {
+    margin: 0;
+    color: whitesmoke;
+    font-size: 17px;
+    line-height: 1.7;
+    text-align: center;
+}
 
-    .card-quiensoy p {
-        font-size: 16px;
-    }
+
+
+.card-juego ul {
+    width: 100%;
+    padding-left: 1.5rem;
+    color: whitesmoke;
+    line-height: 1.8;
+}
+
+.card-juego li {
+    margin-bottom: 0.5rem;
+}
+
+.card-juego img {
+    width: 90px;
+    height: 90px;
+ 
+}
+
+button {
+    align-self:center;
+    background: #FF4FA3;
+    border: none;
+    color: whitesmoke;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-family: "Turret Road", sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+button:hover {
+    transform: translateY(2px);
+    color: #1E1B4B;
 }

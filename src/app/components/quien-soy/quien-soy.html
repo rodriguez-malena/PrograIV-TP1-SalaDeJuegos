@@ -1,11 +1,70 @@
+<section class="seccion-presentacion">
 
-<div class="card-quiensoy">
-  <h2>Quién Soy</h2>
-  
-  @if (alumno()) {
-      <h3>{{ alumno()?.name }}</h3>
-      <img [src]="alumno()?.avatar_url" width="200">
-      <p>{{ alumno()?.bio }}</p>  
-    }
+  <div class="card-quiensoy">
+    <h2>Quién Soy</h2>
+    
+    @if (alumno()) {
+        <h3>{{ alumno()?.name }}</h3>
+        <img [src]="alumno()?.avatar_url" width="200">
+        <p>{{ alumno()?.bio }}</p>  
+      }
+  </div>
 
-</div>
+</section>
+
+<section class="seccion-juego">
+  <div class="card-juego">
+    <img src="alfabeto.png" alt="Icono de letras">
+    <h3>Juego propio: <span>El Rosco</span></h3>
+    <p>
+        El Rosco es un juego de preguntas y respuestas inspirado
+        en el programa <strong>Pasapalabra</strong>.
+        El objetivo es completar todas las letras del rosco
+        antes de que se termine el tiempo o se agoten las vidas disponibles.
+    </p>
+
+    <h4>¿Cómo se juega?</h4>
+
+    <ul>
+        <li>
+            Cada letra del abecedario tiene asociada una pregunta.
+        </li>
+
+        <li>
+            El jugador debe escribir la respuesta correspondiente.
+        </li>
+
+        <li>
+            Si la respuesta es correcta, la letra se marca en verde y se suman puntos.
+        </li>
+
+        <li>
+            Si la respuesta es incorrecta, la letra se marca en rojo y se pierde una vida.
+        </li>
+
+        <li>
+            Si el jugador no sabe la respuesta, puede usar el botón <strong>Pasapalabra</strong> para dejar esa letra pendiente
+            y continuar con la siguiente.
+        </li>
+
+        <li>
+            Las letras pendientes volverán a aparecer más adelante hasta que todas hayan sido respondidas.
+        </li>
+    </ul>
+
+    <h4>Condiciones de victoria</h4>
+
+    <ul>
+        <li>El jugador gana si logra completar todas las preguntas del rosco antes de que se termine el tiempo o se quede sin vidas.</li>
+    </ul>
+
+    <h4>Sistema de puntos</h4>
+
+    <ul>
+        <li>Cada respuesta correcta suma 2 puntos.</li>
+        <li>Las respuestas incorrectas descuentan vidas.</li>
+    </ul>
+
+    <button routerLink="/juegos/el-rosco">Jugar</button>
+  </div>
+</section>

@@ -19,7 +19,7 @@
     <div id="contenedorMensajes" class="contenedor-mensajes">
       
           <div class="mensaje" 
-              *ngFor="let mensaje of mensajes"    
+              *ngFor="let mensaje of mensajes()"    
               [ngClass]="(authService.user()?.uid == mensaje.uid) ? 'enviado' : 'recibido'">
 
               <small class="nombre-emisor">

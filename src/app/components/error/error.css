@@ -1,0 +1,48 @@
+.contenedor-error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.8rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+.contenedor-error img {
+    width: 260px;
+    max-width: 90%;
+    object-fit: contain;
+    filter:
+        drop-shadow(0 0 10px rgba(255,79,163,.45))
+        drop-shadow(0 0 25px rgba(171,41,104,.35));
+
+}
+
+.contenedor-error h2 {
+    margin: 0;
+    color: whitesmoke;
+    font-size: 42px;
+    font-family: "Turret Road", sans-serif;
+    letter-spacing: 1px;
+}
+
+.contenedor-error button {
+    margin-top: 1rem;
+    padding: 14px 18px;
+    border: none;
+    border-radius: 14px;
+    background-color: #FF4FA3;
+    color: whitesmoke;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    transition: transform 0.2s,
+    
+}
+
+.contenedor-error button:hover {
+    transform: translateY(-2px) scale(1.03);
+    color: #1E1B4B;
+}
+

@@ -23,7 +23,6 @@ export class Chat implements OnInit {
 
   ngOnInit(): void {
     this.chatService.traerMensajes().subscribe((data) => {
-    
     this.mensajes = data;
 
     setTimeout(() => {
@@ -35,7 +34,7 @@ export class Chat implements OnInit {
 }
 
   async enviarMensaje(){
-    if(this.nuevoMensaje.trim() == ''){
+    if(this.nuevoMensaje == ''){
       return
     }
 

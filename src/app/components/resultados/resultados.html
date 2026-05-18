@@ -1,0 +1,29 @@
+@if(resultadosAhorcado().length > 0){
+    <h2>Ahorcado</h2>
+    <app-tabla-resultados
+    [resultados]="resultadosAhorcado()">
+    </app-tabla-resultados>
+}
+
+@if(resultadosMayorMenor().length > 0){
+    <h2>Mayor o Menor</h2>
+    <app-tabla-resultados
+      [resultados]="resultadosMayorMenor()">
+    </app-tabla-resultados>
+}
+
+@if(resultadosPreguntados().length > 0) {
+    <h2>Preguntados</h2>
+    <app-tabla-resultados
+    [resultados]="resultadosPreguntados()">
+    </app-tabla-resultados>
+
+}
+
+@if(resultadosRosco().length > 0) {
+    <h2>El Rosco</h2>
+    <app-tabla-resultados
+      [resultados]="resultadosRosco()">
+    </app-tabla-resultados>
+
+}

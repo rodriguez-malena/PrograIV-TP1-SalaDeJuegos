@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { confirmarClaveValidator } from '../../validators/clave.validator';
-import { RouterLink } from '@angular/router';
 import { AuthService } from '../../servicios/auth.service';
 import { Router } from '@angular/router';
 import  Swal from 'sweetalert2'
@@ -9,7 +8,7 @@ import  Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-registro',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule],
   templateUrl: './registro.html',
   styleUrl: './registro.css',
 })

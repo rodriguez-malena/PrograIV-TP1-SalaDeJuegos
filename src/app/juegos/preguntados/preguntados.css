@@ -1,0 +1,167 @@
+.contenedor-general-juego{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+
+.contenedor-juego {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    width: 900px;
+    height: 400px;
+}
+
+
+.titulo-juego h2{
+    font-family: "Turret Road", sans-serif;
+    font-size: 35px;
+    color: whitesmoke;
+}
+
+.zona-juego{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 20px;
+    background: rgba(255,255,255,0.08);
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+}
+
+.zona-juego p {
+    font-size: 24px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+}
+
+.contenedor-bandera img{
+    width: 250px;
+    border-radius: 2px;
+    border: 2px solid white;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+    transition: transform 0.2s;
+}
+
+.contenedor-bandera img:hover{
+    transform: scale(1.03);
+}
+
+.contenedor-opciones{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contenedor-opciones button{
+    padding: 10px 10px;
+    border: none;
+    border-radius: 12px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    background-color: whitesmoke;
+    box-shadow: 0 4px 0 #cfcfcf;
+    color: #AB2968;
+    
+}
+
+.contenedor-opciones button:not(:disabled):hover{
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #cfcfcf;
+    background-color: #ececec;
+}
+
+.contenedor-opciones button:active{
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #cfcfcf;
+}
+
+.contenedor-opciones button:disabled{
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.contenedor-opciones .correcta {
+    background-color: rgb(5, 255, 59);
+}
+
+.contenedor-opciones .incorrecta {
+    background-color: red;
+}
+
+.contenedor-estados {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255,255,255,0.08);
+    border-radius: 24px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    height: 400px;
+
+}
+
+.contenedor-puntos, .contenedor-vidas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+}
+
+.contenedor-puntos span, .temporizador span {
+    color: whitesmoke;
+    font-size: 18px;
+    font-weight: 600;
+    
+}
+
+.contenedor-puntos p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    border: none;
+    border-radius: 50%;
+    color: whitesmoke;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 12px;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #FF4FA3, #AB2968);
+    box-shadow: 0 6px 18px rgba(171,41,104,0.5), inset 0 2px 5px rgba(255,255,255,0.2)
+
+}
+
+.contenedor-vidas img {
+    width: 180px;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.35));
+}
+
+.temporizador{
+    color: whitesmoke;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 18px;
+}
+
+.urgente {
+    color: #FF4FA3;
+}

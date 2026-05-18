@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { Ahorcado } from './ahorcado/ahorcado';
 import { MayorMenor } from './mayor-menor/mayor-menor';
 import { partidaGuard } from '../guards/partida-guard';
+import { Preguntados } from './preguntados/preguntados';
+import { ElRosco } from './el-rosco/el-rosco';
 
 const routes: Routes = [
   {
@@ -14,7 +16,17 @@ const routes: Routes = [
     path: 'mayor-menor', 
     component: MayorMenor,
     canDeactivate: [partidaGuard]
-   }
+  },
+  {
+    path: 'preguntados',
+    component: Preguntados,
+    canDeactivate: [partidaGuard]
+  },
+  {
+    path: 'el-rosco',
+    component: ElRosco,
+    canDeactivate: [partidaGuard]
+  }
 ];
 
 @NgModule({

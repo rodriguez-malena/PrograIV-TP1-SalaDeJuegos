@@ -1,0 +1,217 @@
+[ 
+   {
+       "letra": "A",
+       "tipo": "empieza",
+       "pregunta": "Empieza con A: Framework de desarrollo web de código abierto basado en TypeScript.",
+       "respuesta": "ANGULAR",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "B",
+       "tipo": "empieza",
+       "pregunta": "Empieza con B: Tipo de dato true o false.",
+       "respuesta": "BOOLEAN",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "C",
+       "tipo": "empieza",
+       "pregunta": "Empieza con C: Bloque reutilizable que combina lógica, HTML y CSS para controlar una sección de la página.",
+       "respuesta": "COMPONENTE",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "D",
+       "tipo": "empieza",
+       "pregunta": "Empieza con D: Elemento que modifica comportamiento en Angular.",
+       "respuesta": "DIRECTIVA",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "E",
+       "tipo": "empieza",
+       "pregunta": "Empieza con E: Notificación del sistema que indica que ha ocurrido una acción específica.",
+       "respuesta": "EVENTO",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "F",
+       "tipo": "empieza",
+       "pregunta": "Empieza con F: Estructura que proporciona una base y un conjunto de herramientas estandarizadas.",
+       "respuesta": "FRAMEWORK",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "G",
+       "tipo": "empieza",
+       "pregunta": "Empieza con G: Función que controla la navegación dentro de la aplicación.",
+       "respuesta": "GUARD",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "H",
+       "tipo": "empieza",
+       "pregunta": "Empieza con H: Lenguaje usado para estructurar páginas web.",
+       "respuesta": "HTML",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "I",
+       "tipo": "empieza",
+       "pregunta": "Empieza con I: Datos que se introducen en un sistema para que este los trabaje o procese.",
+       "respuesta": "INPUT",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "J",
+       "tipo": "empieza",
+       "pregunta": "Empieza con J: Lenguaje de programación usado para desarrollo web.",
+       "respuesta": "JAVASCRIPT",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "K",
+       "tipo": "empieza",
+       "pregunta": "Empieza con K: Acción de presionar una tecla.",
+       "respuesta": "KEYPRESS",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "L",
+       "tipo": "empieza",
+       "pregunta": "Empieza con L: Colección ordenada de elementos.",
+       "respuesta": "LISTA",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "M",
+       "tipo": "empieza",
+       "pregunta": "Empieza con M: Archivo que agrupa funcionalidades.",
+       "respuesta": "MODULO",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "N",
+       "tipo": "empieza",
+       "pregunta": "Empieza con N: El gestor de paquetes por defecto para Node.js.",
+       "respuesta": "NPM",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "Ñ",
+       "tipo": "contiene",
+       "pregunta": "Contiene Ñ: Acción de agregar elementos a una aplicación.",
+       "respuesta": "AÑADIR",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "O",
+       "tipo": "empieza",
+       "pregunta": "Empieza con O: Programación basada en clases y objetos.",
+       "respuesta": "OBJETOS",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "P",
+       "tipo": "empieza",
+       "pregunta": "Empieza con P:  El elemento más pequeño que forma parte de una imagen digital en una pantalla.",
+       "respuesta": "PIXEL",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "Q",
+       "tipo": "empieza",
+       "pregunta": "Empieza con Q: Solicitud de información específica que se le hace a una computadora, a una base de datos o a un buscador.",
+       "respuesta": "QUERY",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "R",
+       "tipo": "empieza",
+       "pregunta": "Empieza con R: Herramienta para la navegación entre pantallas.",
+       "respuesta": "ROUTER",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "S",
+       "tipo": "empieza",
+       "pregunta": "Empieza con S: Clase encargada de la lógica reutilizable.",
+       "respuesta": "SERVICIO",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "T",
+       "tipo": "empieza",
+       "pregunta": "Empieza con T: Lenguaje de programación fuertemente tipado que se basa en JavaScript.",
+       "respuesta": "TYPESCRIPT",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "U",
+       "tipo": "empieza",
+       "pregunta": "Empieza con U: Interfaz visual del usuario.",
+       "respuesta": "UI",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "V",
+       "tipo": "contiene",
+       "pregunta": "Contiene V: Tipo de guard que evalúa si un usuario puede acceder a una ruta antes de cargarla.",
+       "respuesta": "CANACTIVATE",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "W",
+       "tipo": "empieza",
+       "pregunta": "Empieza con W: Red global de páginas.",
+       "respuesta": "WEB",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "X",
+       "tipo": "empieza",
+       "pregunta": "Empieza con X: Lenguaje de marcado utilizado para almacenar y estructurar datos en la web.",
+       "respuesta": "XML",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "Y",
+       "tipo": "contiene",
+       "pregunta": "Contiene Y: Esquema de distribución y organización de los elementos visuales dentro de una web.",
+       "respuesta": "LAYOUT",
+       "estado": "pendiente"
+    },
+
+    {
+       "letra": "Z",
+       "tipo": "empieza",
+       "pregunta": "Empieza con Z: Archivo comprimido.",
+       "respuesta": "ZIP",
+       "estado": "pendiente"
+    }
+]

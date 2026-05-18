@@ -1,0 +1,50 @@
+<div class="contenedor-general-juego">
+    <div class="titulo-juego">
+        <h2>Preguntados</h2>
+    </div>   
+
+    <div class="contenedor-juego">
+    
+        @if(paisCorrecto()){
+            <div class="zona-juego">
+                <p>¿A qué país corresponde esta bandera?</p>
+                <div class="contenedor-bandera">
+                    <img [src]="paisCorrecto()?.flags.png" width="300">
+                </div>
+
+                
+                <div class="contenedor-opciones">
+                    @for (opcion of opcionesPaises(); track $index) {
+                        <button (click)="analizarRespuesta(opcion)"
+                            [disabled]="respondio"
+                            [ngClass]="{
+                                'correcta': esCorrecta(opcion),
+                                'incorrecta': esIncorrecta(opcion) }">
+                            {{ opcion }}
+                        </button>
+                        }
+                </div>
+            </div>
+
+            <div class="contenedor-estados">
+                <div class="temporizador">
+                    <span>Tiempo restante</span>
+                    <p [ngClass]="{ 'urgente': tiempoLimite - tiempoActual <= 10 }">
+                        {{tiempoLimite - tiempoActual}}
+                    </p>
+                </div>
+                <div class="contenedor-puntos">
+                    <span>Puntos</span>
+                    <p>{{ puntaje }}</p>
+                </div>
+                <div class="contenedor-vidas">
+                   <img [src]="vidas + '_vidas.png'">
+                </div>
+            
+            
+    
+            </div>
+            
+            }
+    </div>
+</div>

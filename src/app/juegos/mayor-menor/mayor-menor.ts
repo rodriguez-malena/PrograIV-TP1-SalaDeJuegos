@@ -2,8 +2,8 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../servicios/auth.service';
 import { Cartas } from './serviciosMayorMenor/cartas';
-import { PartidaMayorMenor } from './serviciosMayorMenor/partida-mayor-menor';
 import Swal from 'sweetalert2';
+import { ResultadosService } from '../../servicios/resultados-service';
 
 
 @Component({
@@ -17,13 +17,14 @@ export class MayorMenor implements OnInit {
               private cd: ChangeDetectorRef,
               private router: Router,
               private auth: AuthService,
-              private partida: PartidaMayorMenor){}
+              private resultadosService: ResultadosService){}
 
     jugando: boolean = false;
     cartasAcertadas: string[] = [];
+    cartasErradas: string[] = [];
     vidas: number = 3;
     puntos: number = 0;
-    resultado: string = '';
+    gano: boolean = false;
     cartaActual: any;
     cartaSiguiente: any;
     deckId: string = '';
@@ -31,6 +32,29 @@ export class MayorMenor implements OnInit {
     cargando: boolean = true;
     eleccionJugador: string = '' 
     mostrarNuevaCarta: boolean = false;
+    tiempoInicio: number = 0;
+    tiempoFinal: number = 0;
+    tiempoTotal: number = 0;
+
+    ngOnInit(): void {
+    this.mostrarReglas()
+    this.iniciarJuego()
+    }
+
+    iniciarJuego(){
+      this.tiempoInicio = Date.now()
+      this.crearMazo()
+    }
+
+    reiniciarJuego() {
+      this.jugando = true;
+      this.deckId = '';
+      this.vidas = 3;
+      this.puntos = 0;
+      this.gano = false;
+      this.iniciarJuego();
+      this.cd.detectChanges();
+      }
 
     crearMazo() {
       this.cartaService.traerMazo().subscribe((respuesta)=>{
@@ -58,11 +82,10 @@ export class MayorMenor implements OnInit {
 
       this.cartaSiguiente = respuesta.cards[0];
       console.log("CARTA NUEVA: ", this.cartaSiguiente)
-      this.mostrarNuevaCarta = true;
-
-      setTimeout(() => {
-        this.cd.detectChanges();
-      }, 1000);
+      
+      
+        this.mostrarNuevaCarta = true;
+  
             
       let valorActual = this.obtenerValor(this.cartaActual);
       let valorNueva = this.obtenerValor(this.cartaSiguiente);
@@ -81,6 +104,8 @@ export class MayorMenor implements OnInit {
       }
       else {
         this.vidas--;
+        this.cartasErradas.push(this.cartaSiguiente.code)
+
       }
 
       this.verificarVictoria()
@@ -99,6 +124,10 @@ export class MayorMenor implements OnInit {
   }
 
   obtenerValor(carta: any): number {
+
+    if(!carta?.value){
+    return 0;
+  }
     switch(carta.value){
       case 'ACE':
         return 1;
@@ -131,7 +160,7 @@ export class MayorMenor implements OnInit {
   verificarVictoria(){
     if(this.vidas === 0){
       this.jugando = false
-      this.resultado = "Perdió partida"
+      this.gano = false
       this.guardarPartida();
 
       Swal.fire({
@@ -163,7 +192,7 @@ export class MayorMenor implements OnInit {
                 
     } else if(this.puntos === 5){
       this.jugando = false
-      this.resultado = "Ganó partida"
+      this.gano = false
       this.guardarPartida()
 
       Swal.fire({
@@ -200,18 +229,29 @@ export class MayorMenor implements OnInit {
     return this.auth.getUser().nombre
   }
 
-  obtenerCantidadCartas(){
+  obtenerCantidadCartasAcertadas(){
     return this.cartasAcertadas.length
   }
 
-  async guardarPartida(){
-    const usuario = this.obtenerUsuario();
-    const resultado = this.resultado;
-    const cantidadCartas = this.obtenerCantidadCartas();
-    const puntosObtenidos = this.puntos;
-    const totalVidas = this.vidas;
+  obtenerCantidadCartasErradas(){
+    return this.cartasErradas.length
+  }
 
-    await this.partida.guardarDatosPartidaMayorMenor(usuario, resultado,cantidadCartas,puntosObtenidos, totalVidas)
+  obtenerTiempoTotal(){
+      const milisegundos = this.tiempoFinal - this.tiempoInicio;
+      return `${Math.floor(milisegundos / 1000)} segundos` ;
+    }
+
+  async guardarPartida(){
+    this.tiempoFinal = Date.now();
+    const juego = "Mayor o Menor"
+    const usuario = this.obtenerUsuario();
+    const cantidadCartasAdivinadas = this.obtenerCantidadCartasAcertadas();
+    const cantidadCartasErradas = this.obtenerCantidadCartasErradas()
+    const tiempoTranscurrido = this.obtenerTiempoTotal()
+    const fecha = new Date();
+
+    await this.resultadosService.guardarDatosPartida(juego,usuario,this.gano,cantidadCartasAdivinadas, cantidadCartasErradas, this.puntos, this.vidas, tiempoTranscurrido, fecha)
     console.log("Partida guardada")
   }
 
@@ -219,21 +259,7 @@ export class MayorMenor implements OnInit {
       return this.jugando;
     }
 
-  reiniciarJuego() {
-      this.iniciarJuego();
-      this.cd.detectChanges();
-      }
-    
-
-  iniciarJuego(){
-    this.jugando = true;
-    this.deckId = '';
-    this.vidas = 3;
-    this.puntos = 0;
-    this.crearMazo()
-    
-  }
-
+ 
   volverAJuegos(){
     this.router.navigate(['./home'])
   }
@@ -259,11 +285,5 @@ export class MayorMenor implements OnInit {
       });
       
     }
-
-  ngOnInit(): void {
-    this.mostrarReglas()
-    this.iniciarJuego()
-    
-  }
 
 }

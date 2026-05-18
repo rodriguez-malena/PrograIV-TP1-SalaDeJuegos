@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PartidaMayorMenor } from './partida-mayor-menor';
+import { PreguntasService } from './preguntas-service';
 
-describe('PartidaMayorMenor', () => {
-  let service: PartidaMayorMenor;
+describe('PreguntasService', () => {
+  let service: PreguntasService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(PartidaMayorMenor);
+    service = TestBed.inject(PreguntasService);
   });
 
   it('should be created', () => {

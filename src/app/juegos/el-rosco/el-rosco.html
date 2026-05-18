@@ -1,0 +1,88 @@
+<div class="contenedor-general">
+
+    <div class="tituloMasJuego">
+        <div class="contenedor-titulo">
+            <h2>El Rosco</h2>
+        </div>
+
+        <div class="contenedor-rosco">
+            <div class="pregunta-actual">
+                
+                @if (preguntaActual){
+                    <p>{{ preguntaActual.pregunta }}</p>
+                }
+
+            </div>
+
+            <div class="zona-rosco">
+                <svg width="600" height="600">
+                    <circle cx="300"cy="300" r="230" class="circulo-rosco"/>
+        
+                        @for(letra of preguntasRosco; track $index){
+                            <g>
+                                <circle
+                                    [attr.cx]="obtenerPosicionX($index)"
+                                    [attr.cy]="obtenerPosicionY($index)"
+                                    r="22"
+                                    class="letra-circulo"
+        
+                                    [ngClass]="{
+                                        'correcta': letra.estado === 'correcta',
+                                        'incorrecta': letra.estado === 'incorrecta',
+                                        'actual': letra.estado === 'actual',
+                                        'pasada': letra.estado === 'pasada'
+                                        }"
+                                />
+                                <text
+                                    [attr.x]="obtenerPosicionX($index)"
+                                    [attr.y]="obtenerPosicionY($index) + 6"
+                                    text-anchor="middle"
+                                    class="texto-letra">
+        
+                                    {{ letra.letra }}
+                                </text>
+                            </g>
+                        }
+                </svg>
+                 <div class="contenedor-respuesta">
+
+                    <input class="respuestaUsuario" type="text"[(ngModel)]="respuestaUsuario">
+                    <div class="botones">
+                        <button (click)="respuestaUsuario.trim() ? verificarRespuesta() : pasapalabra()">
+                            {{ respuestaUsuario.trim() ? 'Enviar' : 'Pasapalabra' }}
+                        </button>
+
+                     </div>
+
+                </div>
+            </div>
+            <div class="contenedor-estados">
+                <div class="temporizador">
+                    <span>Tiempo restante</span>
+                    <p>
+                        {{ tiempoLimite - tiempoActual}}
+                    </p>
+                </div>
+                 <div class="vidas">
+                    <span>Vidas</span>
+                    <p>
+                        {{ vidas}}
+                    </p>
+                </div>
+                 <div class="puntos">
+                    <span>Puntos</span>
+                    <p>
+                        {{ puntaje }}
+                    </p>
+                </div>
+
+
+            </div>
+            
+        </div>
+
+
+    </div>
+
+
+</div>

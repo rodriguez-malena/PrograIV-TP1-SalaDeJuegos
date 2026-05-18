@@ -1,0 +1,158 @@
+
+.contenedor-general {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.contenedor-titulo h2 {
+    font-family: "Turret Road", sans-serif;
+    font-size: 35px;
+    color: whitesmoke;
+    text-align: center;
+}
+
+
+.pregunta-actual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 18px;
+    width: 250px;
+    min-height: 140px;
+    padding: 10px 10px;
+    border: #AB2968;
+    background: rgba(255,255,255,0.12);
+}
+
+.pregunta-actual p {
+    color: whitesmoke;
+    font-size: 18px;
+    margin: 0;
+}
+
+.circulo-rosco {
+    fill: none;
+    stroke: #0c092a;
+    stroke-width: 5;
+}
+
+.letra-circulo {
+    fill: #FF4FA3;
+    transition: 0.3s;
+}
+
+.texto-letra {
+    fill: whitesmoke;
+    font-size: 18px;
+    font-weight: bold;
+    user-select: none;
+}
+
+.correcta {
+    fill: rgb(37, 239, 37);
+}
+
+.incorrecta {
+    fill: red;
+}
+
+.actual {
+    fill: #FF4FA3;
+}
+
+.pasada {
+    fill: rgb(231, 204, 98);
+}
+
+.contenedor-rosco {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    width: 100%;
+}
+
+.zona-rosco {
+    position: relative;
+    width: 600px;
+    height: 600px;
+}
+
+.contenedor-respuesta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contenedor-respuesta .respuestaUsuario {
+    padding: 12px;
+    border-radius: 12px;
+    font-family: "Poppins", sans-serif;
+    color: #AB2968;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 18px;
+    width: 220px;
+}
+
+.botones button {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 12px;
+    font-family: "Turret Road",sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    background-color: whitesmoke;
+    box-shadow: 0 4px 0 #cfcfcf;
+}
+
+.botones button:active{
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #cfcfcf;
+}
+
+.contenedor-estados {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.temporizador, .vidas, .puntos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background: rgba(255,255,255,0.12);
+    padding: 14px 18px;
+    border-radius: 18px;
+    min-width: 130px;
+}
+
+.temporizador span,.vidas span,.puntos span {
+    color: whitesmoke;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
+
+.temporizador p,.vidas p,.puntos p {
+    color: #FF4FA3;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}

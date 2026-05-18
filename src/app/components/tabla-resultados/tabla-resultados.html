@@ -1,0 +1,31 @@
+<table>
+    <thead>
+        <tr>
+            <th>Jugador</th>
+            <th>Puntaje</th>
+            <th>Aciertos</th>
+            <th>Errores</th>
+            <th>Vidas</th>
+            <th>Tiempo</th>
+            <th>Resultado</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(resultado of resultados; track $index){
+
+            <tr>
+                <td>{{ resultado.usuario }}</td>
+                <td>{{ resultado.puntaje }}</td>
+                <td>{{ resultado.cantidadAciertos }}</td>
+                <td>{{ resultado.cantidadErrores }}</td>
+                <td>{{ resultado.vidas }}</td>
+                <td>{{ resultado.tiempoTotal }}</td>
+                <td>
+                    {{ resultado.gano ? 'Ganó' : 'Perdió' }}
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
